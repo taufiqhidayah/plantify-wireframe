@@ -1,6 +1,11 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const LandingPage = () => {
+  const router = useRouter();
+
   return (
     <div className="min-h-screen bg-white text-black font-mono">
       {/* Header */}
@@ -15,9 +20,12 @@ const LandingPage = () => {
             <div className="border border-black px-3 py-1">Community</div>
             <div className="border border-black px-3 py-1">About</div>
           </nav>
-          <div className="bg-black text-white px-4 py-2">
+          <button
+            className="bg-black text-white px-4 py-2"
+            onClick={() => router.push("/onboarding")}
+          >
             Connect Internet Identity
-          </div>
+          </button>
         </div>
       </header>
 
