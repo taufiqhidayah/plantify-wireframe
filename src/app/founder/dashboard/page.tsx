@@ -11,9 +11,11 @@ import {
   Bell,
   Eye,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const FounderDashboard = () => {
+  const router = useRouter();
   const [selectedStartup, setSelectedStartup] = useState(0);
   const [activeTab, setActiveTab] = useState("overview");
 
@@ -201,7 +203,10 @@ const FounderDashboard = () => {
                 </option>
               ))}
             </select>
-            <button className="bg-black text-white px-4 py-2 hover:bg-gray-800">
+            <button
+              className="bg-black text-white px-4 py-2 hover:bg-gray-800"
+              onClick={() => router.push("/founder/create-startup")}
+            >
               + CREATE NEW STARTUP
             </button>
           </div>
