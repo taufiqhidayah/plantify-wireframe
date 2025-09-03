@@ -1,8 +1,11 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const PlantifyFounderRegistration = () => {
+  const router = useRouter();
+
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     // Personal Information
@@ -493,11 +496,7 @@ const PlantifyFounderRegistration = () => {
             ) : (
               <button
                 disabled={!canProceed()}
-                onClick={() =>
-                  alert(
-                    "Registration completed! Redirecting to founder dashboard..."
-                  )
-                }
+                onClick={() => router.push("/founder/dashboard")}
                 className={`px-8 py-2 ${
                   canProceed()
                     ? "bg-black text-white hover:bg-gray-800"
