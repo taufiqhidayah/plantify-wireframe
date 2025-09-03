@@ -666,7 +666,10 @@ const FounderDashboard = () => {
                         Your collateral balance is getting low. Consider topping
                         up to maintain payment security.
                       </div>
-                      <button className="bg-black text-white px-4 py-2 text-xs mt-2">
+                      <button
+                        className="bg-black text-white px-4 py-2 text-xs mt-2"
+                        onClick={() => router.push("/founder/collateral")}
+                      >
                         TOP UP COLLATERAL
                       </button>
                     </div>
@@ -752,7 +755,10 @@ const FounderDashboard = () => {
                 <button className="w-full border border-black py-2 text-sm hover:bg-gray-100">
                   REQUEST FUND WITHDRAWAL
                 </button>
-                <button className="w-full border border-black py-2 text-sm hover:bg-gray-100">
+                <button
+                  className="w-full border border-black py-2 text-sm hover:bg-gray-100"
+                  onClick={() => router.push("/founder/collateral")}
+                >
                   TOP UP COLLATERAL
                 </button>
                 <button className="w-full border border-black py-2 text-sm hover:bg-gray-100">
