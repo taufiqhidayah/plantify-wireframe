@@ -1,11 +1,14 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const PlantifyOnboarding = () => {
   const [selectedRole, setSelectedRole] = useState<
     "investor" | "founder" | null
   >(null);
+
+  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-white text-black font-mono">
@@ -213,9 +216,9 @@ const PlantifyOnboarding = () => {
                   className="bg-black text-white px-12 py-4 text-xl cursor-pointer inline-block"
                   onClick={() => {
                     if (selectedRole === "investor") {
-                      alert("Redirecting to Investor Registration...");
+                      router.push("/register/investor");
                     } else {
-                      alert("Redirecting to Founder Registration...");
+                      router.push("/register/founder");
                     }
                   }}
                 >
