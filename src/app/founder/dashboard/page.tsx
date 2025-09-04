@@ -8,16 +8,29 @@ import {
   AlertCircle,
   TrendingUp,
   Eye,
+  Upload,
+  Save,
+  Send,
+  CheckCircle,
+  Clock,
+  Target,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import FounderNavbar from "@/components/founder/FounderNavbar";
 import FounderFooter from "@/components/founder/FounderFooter";
+import CollateralTopUpModal from "@/components/founder/CollateralTopUpModal";
+import MonthlyReportsComponent from "@/components/founder/MonthlyReportsComponent";
+import ProfitSharingComponent from "@/components/founder/ProfitSharingComponent";
+import InvestorsComponent from "@/components/founder/InvestorsComponent";
+import FundingWithdrawalModal from "@/components/founder/FundingWithdrawalModal";
 
 const FounderDashboard = () => {
   const router = useRouter();
   const [selectedStartup, setSelectedStartup] = useState(0);
   const [activeTab, setActiveTab] = useState("overview");
+  const [isTopUpModalOpen, setIsTopUpModalOpen] = useState(false);
+  const [isWithdrawalModalOpen, setIsWithdrawalModalOpen] = useState(false);
 
   const startups = [
     {
@@ -72,10 +85,15 @@ const FounderDashboard = () => {
       useOfFunds: "40% R&D, 30% marketing, 20% operations, 10% working capital",
 
       // Collateral Information
-      collateralLocked: 4800, // 12 months × $400
-      remainingCollateral: 4200,
+      collateralRequired: 4800, // 12 months × $400 + 10% buffer
+      collateralDeposited: 4800, // Fully deposited
+      collateralProgress: 100, // 100% complete
       collateralSource: "ckUSDC",
-      collateralStatus: "Healthy",
+      collateralStatus: "AKTIF", // Active status
+      topUpHistory: [
+        { date: "2024-06-15", amount: 2000, type: "ICP" },
+        { date: "2024-06-20", amount: 2800, type: "ckUSDC" },
+      ],
 
       // Operational Status
       monthsActive: 6,
@@ -90,7 +108,7 @@ const FounderDashboard = () => {
       id: 2,
       name: "Green Harvest Farm",
       sector: "Agriculture & Farming",
-      status: "Collateral Required",
+      status: "PENDING",
       companyType: "LLC",
       location: "Austin, Texas",
       foundedYear: "2022",
@@ -127,11 +145,12 @@ const FounderDashboard = () => {
       useOfFunds: "50% equipment, 30% operations, 20% marketing",
 
       // Collateral Information
-      collateralLocked: 0,
-      remainingCollateral: 0,
-      collateralSource: "Not Set",
-      collateralStatus: "Required",
-      collateralRequired: 360, // 12 months × $30
+      collateralRequired: 360, // 12 months × $30 + 10% buffer
+      collateralDeposited: 180, // Partially deposited
+      collateralProgress: 50, // 50% complete
+      collateralSource: "ckUSDC",
+      collateralStatus: "PENDING", // Pending status
+      topUpHistory: [{ date: "2024-12-20", amount: 180, type: "ckUSDC" }],
 
       // Operational Status
       monthsActive: 0,
@@ -146,7 +165,7 @@ const FounderDashboard = () => {
       id: 3,
       name: "Urban Cafe Network",
       sector: "Food & Beverage",
-      status: "Pending Review",
+      status: "PENDING",
       companyType: "Corp",
       location: "New York, NY",
       foundedYear: "2024",
@@ -183,11 +202,12 @@ const FounderDashboard = () => {
       useOfFunds: "60% equipment, 25% operations, 15% marketing",
 
       // Collateral Information
-      collateralLocked: 0,
-      remainingCollateral: 0,
+      collateralRequired: 300, // 12 months × $25 + 10% buffer
+      collateralDeposited: 0, // No deposits yet
+      collateralProgress: 0, // 0% complete
       collateralSource: "Not Set",
-      collateralStatus: "Pending",
-      collateralRequired: 300, // 12 months × $25
+      collateralStatus: "PENDING", // Pending status
+      topUpHistory: [],
 
       // Operational Status
       monthsActive: 0,
@@ -235,8 +255,24 @@ const FounderDashboard = () => {
     },
     {
       label: "Active Startups",
-      value: startups.filter((s) => s.status === "Active").length.toString(),
+      value: startups.filter((s) => s.status === "AKTIF").length.toString(),
       subtext: `of ${startups.length} total`,
+      icon: FileText,
+      color: "text-black",
+      bgColor: "bg-white",
+    },
+    {
+      label: "Pending Startups",
+      value: startups.filter((s) => s.status === "PENDING").length.toString(),
+      subtext: "Awaiting collateral",
+      icon: AlertCircle,
+      color: "text-black",
+      bgColor: "bg-white",
+    },
+    {
+      label: "Draft Startups",
+      value: startups.filter((s) => s.status === "Draft").length.toString(),
+      subtext: "In development",
       icon: FileText,
       color: "text-black",
       bgColor: "bg-white",
@@ -303,8 +339,39 @@ const FounderDashboard = () => {
     },
   ];
 
+  const handleTopUp = (amount: number, type: "ICP" | "ckUSDC") => {
+    const currentStartup = startups[selectedStartup];
+    if (currentStartup) {
+      // Update the startup's collateral data
+      currentStartup.collateralDeposited += amount;
+      currentStartup.collateralProgress = Math.round(
+        (currentStartup.collateralDeposited /
+          currentStartup.collateralRequired) *
+          100
+      );
+
+      // Add to top-up history
+      if (!currentStartup.topUpHistory) {
+        currentStartup.topUpHistory = [];
+      }
+      currentStartup.topUpHistory.push({
+        date: new Date().toISOString().split("T")[0],
+        amount: amount,
+        type: type,
+      });
+
+      // Update status if collateral is now complete
+      if (currentStartup.collateralProgress >= 100) {
+        currentStartup.status = "AKTIF";
+      }
+
+      // Force re-render by updating state
+      setSelectedStartup(selectedStartup);
+    }
+  };
+
   return (
-    <div className="bg-gray-50 text-black font-mono min-h-screen flex flex-col">
+    <div className="bg-white text-black font-mono min-h-screen flex flex-col">
       <FounderNavbar />
 
       <div className="max-w-7xl mx-auto px-4 py-6">
@@ -315,7 +382,7 @@ const FounderDashboard = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <div className="text-2xl font-bold">{stat.value}</div>
-                  <div className="text-sm text-gray-600">{stat.subtext}</div>
+                  <div className="text-sm text-black">{stat.subtext}</div>
                   <div className="text-xs font-medium mt-1">{stat.label}</div>
                 </div>
                 <div className={`p-3 rounded ${stat.bgColor}`}>
@@ -326,50 +393,14 @@ const FounderDashboard = () => {
           ))}
         </div>
 
-        {/* Startup Status Overview */}
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-4 gap-4 mb-16">
-          {[
-            {
-              status: "Active",
-              count: startups.filter((s) => s.status === "Active").length,
-              color: "bg-green-100 text-green-800 border-green-300",
-            },
-            {
-              status: "Collateral Required",
-              count: startups.filter((s) => s.status === "Collateral Required")
-                .length,
-              color: "bg-yellow-100 text-yellow-800 border-yellow-300",
-            },
-            {
-              status: "Pending Review",
-              count: startups.filter((s) => s.status === "Pending Review")
-                .length,
-              color: "bg-blue-100 text-blue-800 border-blue-300",
-            },
-            {
-              status: "Draft",
-              count: startups.filter((s) => s.status === "Draft").length,
-              color: "bg-gray-100 text-gray-800 border-gray-300",
-            },
-          ].map((item, index) => (
-            <div
-              key={index}
-              className={`border-2 ${item.color} p-3 text-center`}
-            >
-              <div className="text-2xl font-bold">{item.count}</div>
-              <div className="text-sm font-medium">{item.status}</div>
-            </div>
-          ))}
-        </div>
-
         {/* Startup Selector */}
         <div className="mb-4">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             <div className="flex items-center space-x-4">
               <h1 className="text-3xl font-bold text-black">Your Startups</h1>
-              <div className="text-sm text-gray-600">
+              <div className="text-sm text-black">
                 {startups.length} startup{startups.length !== 1 ? "s" : ""} •{" "}
-                {startups.filter((s) => s.status === "Active").length} active
+                {startups.filter((s) => s.status === "AKTIF").length} active
               </div>
             </div>
 
@@ -414,7 +445,7 @@ const FounderDashboard = () => {
                   className={`px-4 py-3 font-bold border-b-2 ${
                     activeTab === tab.id
                       ? "border-black bg-white"
-                      : "border-transparent hover:border-gray-300"
+                      : "border-transparent hover:border-black"
                   }`}
                 >
                   {tab.label}
@@ -424,7 +455,7 @@ const FounderDashboard = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="">
           {/* Main Content Area */}
           <div className="lg:col-span-2 space-y-6">
             {activeTab === "overview" && (
@@ -443,12 +474,12 @@ const FounderDashboard = () => {
                         <span
                           className={`px-3 py-1 text-sm border-2 font-medium ${
                             currentStartup.status === "Active"
-                              ? "border-green-500 bg-green-50 text-green-800"
-                              : currentStartup.status === "Collateral Required"
-                              ? "border-yellow-500 bg-yellow-50 text-yellow-800"
+                              ? "border-black bg-white text-black"
+                              : currentStartup.status === "PENDING"
+                              ? "border-black bg-white text-black"
                               : currentStartup.status === "Pending Review"
-                              ? "border-blue-500 bg-blue-50 text-blue-800"
-                              : "border-gray-500 bg-gray-50 text-gray-800"
+                              ? "border-black bg-white text-black"
+                              : "border-black bg-white text-black"
                           }`}
                         >
                           {currentStartup.status}
@@ -457,7 +488,7 @@ const FounderDashboard = () => {
                           {currentStartup.companyType}
                         </span>
                       </div>
-                      <div className="text-sm text-gray-600">
+                      <div className="text-sm text-black">
                         📍 {currentStartup.location} • Founded{" "}
                         {currentStartup.foundedYear}
                         {currentStartup.website && (
@@ -468,7 +499,7 @@ const FounderDashboard = () => {
                               href={currentStartup.website}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-blue-600 hover:underline"
+                              className="text-black hover:underline"
                             >
                               {currentStartup.website}
                             </a>
@@ -476,16 +507,16 @@ const FounderDashboard = () => {
                         )}
                       </div>
                     </div>
-                    <button className="border border-black px-4 py-2 text-sm hover:bg-gray-100 font-medium">
+                    <button className="border border-black px-4 py-2 text-sm hover:bg-white font-medium">
                       <Eye className="h-4 w-4 inline mr-1" />
                       View Public Page
                     </button>
                   </div>
 
                   {/* Startup Description */}
-                  <div className="mb-6 p-4 bg-gray-50 border border-gray-300">
+                  <div className="mb-6 p-4 bg-white border border-black">
                     <div className="text-sm font-medium mb-1">Description</div>
-                    <div className="text-sm text-gray-700">
+                    <div className="text-sm text-black">
                       {currentStartup.description}
                     </div>
                   </div>
@@ -532,9 +563,9 @@ const FounderDashboard = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-gray-200">
+                  <div className="grid grid-cols-3 gap-4 mt-4 pt-4 border-t border-black">
                     <div>
-                      <div className="text-xs text-gray-600">
+                      <div className="text-xs text-black">
                         Monthly Commitment
                       </div>
                       <div className="font-bold">
@@ -542,13 +573,13 @@ const FounderDashboard = () => {
                       </div>
                     </div>
                     <div>
-                      <div className="text-xs text-gray-600">Approval Rate</div>
+                      <div className="text-xs text-black">Approval Rate</div>
                       <div className="font-bold text-black">
                         {currentStartup.approvalRate}
                       </div>
                     </div>
                     <div>
-                      <div className="text-xs text-gray-600">Active Months</div>
+                      <div className="text-xs text-black">Active Months</div>
                       <div className="font-bold">
                         {currentStartup.monthsActive} months
                       </div>
@@ -558,24 +589,22 @@ const FounderDashboard = () => {
 
                 {/* Status-Based Actions */}
                 <div className="border-2 border-black p-6 bg-white">
-                  <h3 className="text-lg font-bold mb-4 bg-gray-100 p-2">
-                    {currentStartup.status === "Active"
+                  <h3 className="text-lg font-bold mb-4 bg-white p-2">
+                    {currentStartup.status === "AKTIF"
                       ? "🚨 URGENT ACTIONS REQUIRED"
-                      : currentStartup.status === "Collateral Required"
-                      ? "⚠️ ACTIVATION REQUIRED"
-                      : currentStartup.status === "Pending Review"
-                      ? "⏳ PENDING ACTIONS"
+                      : currentStartup.status === "PENDING"
+                      ? "⚠️ COLLATERAL TOP-UP REQUIRED"
                       : "📋 STARTUP STATUS"}
                   </h3>
                   <div className="space-y-3">
-                    {currentStartup.status === "Active" && (
+                    {currentStartup.status === "AKTIF" && (
                       <>
                         <div className="flex items-center justify-between border border-black p-3 bg-white">
                           <div>
                             <div className="font-bold text-sm">
                               January Monthly Report Due
                             </div>
-                            <div className="text-xs text-gray-600">
+                            <div className="text-xs text-black">
                               Submit by Jan 10, 2025
                             </div>
                           </div>
@@ -589,12 +618,12 @@ const FounderDashboard = () => {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-between border border-gray-300 p-3 bg-gray-50">
+                        <div className="flex items-center justify-between border border-black p-3 bg-white">
                           <div>
                             <div className="font-bold text-sm">
                               Collateral Health Check
                             </div>
-                            <div className="text-xs text-gray-600">
+                            <div className="text-xs text-black">
                               Monitor collateral balance
                             </div>
                           </div>
@@ -602,7 +631,10 @@ const FounderDashboard = () => {
                             <div className="text-sm font-bold text-black">
                               {currentStartup.collateralStatus}
                             </div>
-                            <button className="border border-black px-3 py-1 text-xs mt-1 hover:bg-gray-100">
+                            <button
+                              onClick={() => setIsTopUpModalOpen(true)}
+                              className="border border-black px-3 py-1 text-xs mt-1 hover:bg-white"
+                            >
                               TOP UP
                             </button>
                           </div>
@@ -610,45 +642,28 @@ const FounderDashboard = () => {
                       </>
                     )}
 
-                    {currentStartup.status === "Collateral Required" && (
-                      <div className="flex items-center justify-between border border-yellow-300 p-3 bg-yellow-50">
+                    {currentStartup.status === "PENDING" && (
+                      <div className="flex items-center justify-between border border-black p-3 bg-white">
                         <div>
                           <div className="font-bold text-sm">
-                            Add Collateral to Activate
+                            Top-Up Collateral to Activate
                           </div>
-                          <div className="text-xs text-gray-600">
-                            Required: ${currentStartup.collateralRequired}{" "}
-                            ckUSDC
+                          <div className="text-xs text-black">
+                            Progress: {currentStartup.collateralProgress}% •
+                            Deposited: ${currentStartup.collateralDeposited} / $
+                            {currentStartup.collateralRequired} ckUSDC
                           </div>
                         </div>
                         <div className="text-right">
-                          <div className="text-sm font-bold text-yellow-800">
-                            Ready to activate
+                          <div className="text-sm font-bold text-black">
+                            {currentStartup.collateralProgress}% Complete
                           </div>
-                          <button className="bg-yellow-600 text-white px-3 py-1 text-xs mt-1 hover:bg-yellow-700">
-                            ADD COLLATERAL
+                          <button
+                            onClick={() => setIsTopUpModalOpen(true)}
+                            className="bg-black text-white px-3 py-1 text-xs mt-1 hover:bg-gray-800"
+                          >
+                            TOP UP NOW
                           </button>
-                        </div>
-                      </div>
-                    )}
-
-                    {currentStartup.status === "Pending Review" && (
-                      <div className="flex items-center justify-between border border-blue-300 p-3 bg-blue-50">
-                        <div>
-                          <div className="font-bold text-sm">
-                            Application Under Review
-                          </div>
-                          <div className="text-xs text-gray-600">
-                            Platform team is reviewing your application
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-sm font-bold text-blue-800">
-                            Review in progress
-                          </div>
-                          <div className="text-xs text-blue-600 mt-1">
-                            Usually 5-7 days
-                          </div>
                         </div>
                       </div>
                     )}
@@ -752,7 +767,7 @@ const FounderDashboard = () => {
                     {currentStartup.teamMembers.map((member, index) => (
                       <div
                         key={member.id}
-                        className="border-2 border-gray-300 p-4 bg-gray-50"
+                        className="border-2 border-black p-4 bg-white"
                       >
                         <div className="flex items-start justify-between mb-3">
                           <div>
@@ -760,12 +775,12 @@ const FounderDashboard = () => {
                               {member.isFounder ? "👑 " : ""}
                               {member.name}
                             </div>
-                            <div className="text-sm text-gray-600 font-medium">
+                            <div className="text-sm text-black font-medium">
                               {member.role}
                             </div>
                           </div>
                           {member.isFounder && (
-                            <span className="bg-yellow-100 text-yellow-800 px-2 py-1 text-xs font-bold border border-yellow-300">
+                            <span className="bg-white text-black px-2 py-1 text-xs font-bold border border-black">
                               FOUNDER
                             </span>
                           )}
@@ -777,7 +792,7 @@ const FounderDashboard = () => {
                               <span className="font-medium w-16">Email:</span>
                               <a
                                 href={`mailto:${member.email}`}
-                                className="text-blue-600 hover:underline"
+                                className="text-black hover:underline"
                               >
                                 {member.email}
                               </a>
@@ -792,7 +807,7 @@ const FounderDashboard = () => {
                                 href={member.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-blue-600 hover:underline"
+                                className="text-black hover:underline"
                               >
                                 View Profile
                               </a>
@@ -800,11 +815,11 @@ const FounderDashboard = () => {
                           )}
                         </div>
 
-                        <div className="mt-3 p-3 bg-white border border-gray-300">
+                        <div className="mt-3 p-3 bg-white border border-black">
                           <div className="text-xs font-medium mb-1">
                             Background
                           </div>
-                          <div className="text-xs text-gray-700">
+                          <div className="text-xs text-black">
                             {member.background}
                           </div>
                         </div>
@@ -815,11 +830,11 @@ const FounderDashboard = () => {
 
                 {/* Advisors */}
                 {currentStartup.advisors && (
-                  <div className="border-2 border-gray-300 p-4 bg-gray-50">
+                  <div className="border-2 border-black p-4 bg-white">
                     <h4 className="text-lg font-bold mb-3">
                       Advisors & Mentors
                     </h4>
-                    <div className="text-sm text-gray-700">
+                    <div className="text-sm text-black">
                       {currentStartup.advisors}
                     </div>
                   </div>
@@ -857,7 +872,7 @@ const FounderDashboard = () => {
                       ${currentStartup.fundingRaised.toLocaleString()} ckUSDC
                     </div>
                   </div>
-                  <div className="text-xs mt-1 text-gray-600">
+                  <div className="text-xs mt-1 text-black">
                     Target: ${currentStartup.fundingGoal.toLocaleString()}{" "}
                     ckUSDC
                   </div>
@@ -869,10 +884,13 @@ const FounderDashboard = () => {
                     <div className="text-2xl font-bold">
                       ${(currentStartup.fundingRaised * 0.8).toLocaleString()}
                     </div>
-                    <div className="text-xs text-gray-600">
+                    <div className="text-xs text-black">
                       80% of raised funds (ckUSDC)
                     </div>
-                    <button className="w-full border border-black py-2 mt-2 text-sm hover:bg-gray-100">
+                    <button
+                      onClick={() => setIsWithdrawalModalOpen(true)}
+                      className="w-full border border-black py-2 mt-2 text-sm hover:bg-white"
+                    >
                       REQUEST WITHDRAWAL
                     </button>
                   </div>
@@ -881,7 +899,7 @@ const FounderDashboard = () => {
                     <div className="text-2xl font-bold">
                       ${(currentStartup.fundingRaised * 0.2).toLocaleString()}
                     </div>
-                    <div className="text-xs text-gray-600">
+                    <div className="text-xs text-black">
                       20% platform reserve (ckUSDC)
                     </div>
                     <div className="text-xs mt-2 text-black">
@@ -912,6 +930,32 @@ const FounderDashboard = () => {
               </div>
             )}
 
+            {activeTab === "reports" && (
+              <MonthlyReportsComponent
+                startupName={currentStartup.name}
+                onReportSubmit={(report) => {
+                  console.log("Report submitted:", report);
+                  // Handle report submission logic here
+                }}
+                onReportSave={(report) => {
+                  console.log("Report saved:", report);
+                  // Handle report save logic here
+                }}
+              />
+            )}
+
+            {activeTab === "payments" && (
+              <ProfitSharingComponent
+                startupName={currentStartup.name}
+                monthlyCommitment={currentStartup.monthlyCommitment}
+                totalInvestors={currentStartup.nftsSold}
+                onPaymentSubmit={(payment) => {
+                  console.log("Payment submitted:", payment);
+                  // Handle payment submission logic here
+                }}
+              />
+            )}
+
             {activeTab === "collateral" && (
               <div className="border-2 border-black p-6 bg-white">
                 <h3 className="text-xl font-bold mb-6">
@@ -920,22 +964,22 @@ const FounderDashboard = () => {
 
                 {/* Collateral Status Alert */}
                 {currentStartup.status === "Collateral Required" && (
-                  <div className="mb-6 p-4 bg-yellow-50 border-2 border-yellow-300">
+                  <div className="mb-6 p-4 bg-white border-2 border-black">
                     <div className="flex items-start space-x-3">
-                      <AlertCircle className="h-6 w-6 text-yellow-600 mt-0.5" />
+                      <AlertCircle className="h-6 w-6 text-black mt-0.5" />
                       <div>
-                        <div className="font-bold text-yellow-800 mb-2">
+                        <div className="font-bold text-black mb-2">
                           Collateral Required to Activate Startup
                         </div>
-                        <div className="text-sm text-yellow-700 mb-3">
+                        <div className="text-sm text-black mb-3">
                           Your startup has been approved but requires collateral
                           to become active and start fundraising.
                         </div>
-                        <div className="text-sm font-medium text-yellow-800 mb-2">
+                        <div className="text-sm font-medium text-black mb-2">
                           Required Collateral: $
                           {currentStartup.collateralRequired} ckUSDC
                         </div>
-                        <button className="bg-yellow-600 text-white px-4 py-2 text-sm font-bold hover:bg-yellow-700">
+                        <button className="bg-black text-white px-4 py-2 text-sm font-bold hover:bg-gray-800">
                           ADD COLLATERAL NOW
                         </button>
                       </div>
@@ -945,38 +989,38 @@ const FounderDashboard = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                   <div className="border-2 border-black p-4 bg-white">
-                    <div className="text-sm font-bold">Total Locked</div>
+                    <div className="text-sm font-bold">Required Amount</div>
                     <div className="text-2xl font-bold">
-                      ${currentStartup.collateralLocked.toLocaleString()}
+                      ${currentStartup.collateralRequired.toLocaleString()}
                     </div>
-                    <div className="text-xs text-gray-600">
-                      Original collateral (ckUSDC)
+                    <div className="text-xs text-black">
+                      Total collateral needed (ckUSDC)
                     </div>
                   </div>
                   <div className="border-2 border-black p-4 bg-white">
-                    <div className="text-sm font-bold">Current Balance</div>
+                    <div className="text-sm font-bold">Deposited Amount</div>
                     <div className="text-2xl font-bold">
-                      ${currentStartup.remainingCollateral.toLocaleString()}
+                      ${currentStartup.collateralDeposited.toLocaleString()}
                     </div>
-                    <div className="text-xs text-gray-600">
-                      After deductions (ckUSDC)
+                    <div className="text-xs text-black">
+                      Current deposits (ckUSDC)
                     </div>
                   </div>
                   <div className="border-2 border-black p-4 bg-white">
-                    <div className="text-sm font-bold">Payment Method</div>
-                    <div className="text-lg font-bold">
-                      {currentStartup.collateralSource}
+                    <div className="text-sm font-bold">Progress</div>
+                    <div className="text-2xl font-bold">
+                      {currentStartup.collateralProgress}%
                     </div>
-                    <div className="text-xs text-gray-600">
-                      Original payment source
-                    </div>
+                    <div className="text-xs text-black">Completion status</div>
                   </div>
                 </div>
 
-                {/* Collateral Health Status */}
+                {/* Collateral Progress Bar */}
                 <div className="mb-6">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm font-bold">Collateral Health</span>
+                    <span className="text-sm font-bold">
+                      Collateral Progress
+                    </span>
                     <span className="text-sm font-bold">
                       {currentStartup.collateralStatus}
                     </span>
@@ -984,162 +1028,111 @@ const FounderDashboard = () => {
                   <div className="border-2 border-black h-6">
                     <div
                       className={`h-full ${
-                        currentStartup.collateralStatus === "Healthy"
-                          ? "bg-green-500"
-                          : currentStartup.collateralStatus === "Warning"
-                          ? "bg-yellow-500"
-                          : "bg-red-500"
+                        currentStartup.collateralProgress === 100
+                          ? "bg-black"
+                          : currentStartup.collateralProgress >= 50
+                          ? "bg-gray-600"
+                          : "bg-gray-400"
                       }`}
                       style={{
-                        width:
-                          currentStartup.collateralLocked > 0
-                            ? `${
-                                (currentStartup.remainingCollateral /
-                                  currentStartup.collateralLocked) *
-                                100
-                              }%`
-                            : "0%",
+                        width: `${currentStartup.collateralProgress}%`,
                       }}
                     ></div>
                   </div>
-                  <div className="text-xs mt-1 text-gray-600">
-                    {currentStartup.collateralLocked > 0
-                      ? `${Math.round(
-                          (currentStartup.remainingCollateral /
-                            currentStartup.collateralLocked) *
-                            100
-                        )}% remaining`
-                      : "No collateral locked"}
+                  <div className="text-xs mt-1 text-black">
+                    {currentStartup.collateralProgress}% complete • $
+                    {currentStartup.collateralRequired -
+                      currentStartup.collateralDeposited}{" "}
+                    remaining
                   </div>
                 </div>
 
-                <div className="border border-gray-300 p-4 mb-4">
-                  <div className="text-sm font-bold mb-2">
-                    Auto-Deduction History
-                  </div>
+                <div className="border border-black p-4 mb-4">
+                  <div className="text-sm font-bold mb-2">Top-Up History</div>
                   <div className="space-y-2 text-xs">
-                    <div className="flex justify-between">
-                      <span>Sep 2024 - Late payment (2 days)</span>
-                      <span className="font-bold text-black">
-                        -$1,000 ckUSDC
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Jul 2024 - Missed payment (8 days)</span>
-                      <span className="font-bold text-black">
-                        -$1,000 ckUSDC
-                      </span>
-                    </div>
+                    {currentStartup.topUpHistory &&
+                    currentStartup.topUpHistory.length > 0 ? (
+                      currentStartup.topUpHistory.map((topup, index) => (
+                        <div key={index} className="flex justify-between">
+                          <span>
+                            {new Date(topup.date).toLocaleDateString()} -{" "}
+                            {topup.type}
+                          </span>
+                          <span className="font-bold text-black">
+                            +${topup.amount.toLocaleString()} ckUSDC
+                          </span>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-black">No top-ups yet</div>
+                    )}
                   </div>
                 </div>
 
-                <div className="bg-gray-50 border border-gray-300 p-4">
-                  <div className="flex items-start space-x-2">
-                    <AlertCircle className="h-5 w-5 text-black mt-0.5" />
-                    <div>
-                      <div className="font-bold text-sm">
-                        Collateral Warning
+                {currentStartup.collateralProgress < 100 && (
+                  <div className="bg-white border border-black p-4">
+                    <div className="flex items-start space-x-2">
+                      <AlertCircle className="h-5 w-5 text-black mt-0.5" />
+                      <div>
+                        <div className="font-bold text-sm">
+                          Complete Collateral to Activate
+                        </div>
+                        <div className="text-xs mt-1">
+                          You need $
+                          {currentStartup.collateralRequired -
+                            currentStartup.collateralDeposited}{" "}
+                          more ckUSDC to activate your startup and launch NFTs.
+                        </div>
+                        <button
+                          className="bg-black text-white px-4 py-2 text-xs mt-2 hover:bg-gray-800"
+                          onClick={() => setIsTopUpModalOpen(true)}
+                        >
+                          TOP UP NOW
+                        </button>
                       </div>
-                      <div className="text-xs mt-1">
-                        Your collateral balance is getting low. Consider topping
-                        up to maintain payment security.
-                      </div>
-                      <button
-                        className="bg-black text-white px-4 py-2 text-xs mt-2"
-                        onClick={() => router.push("/founder/collateral")}
-                      >
-                        TOP UP COLLATERAL
-                      </button>
                     </div>
                   </div>
-                </div>
+                )}
               </div>
             )}
-          </div>
 
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Upcoming Tasks */}
-            <div className="border-2 border-black p-4 bg-white">
-              <h3 className="font-bold mb-3 flex items-center">
-                <Calendar className="h-4 w-4 mr-2" />
-                UPCOMING TASKS
-              </h3>
-              <div className="space-y-3">
-                {upcomingTasks.map((task, index) => (
-                  <div
-                    key={index}
-                    className={`border p-2 text-xs ${
-                      task.priority === "high"
-                        ? "border-black bg-white"
-                        : task.priority === "medium"
-                        ? "border-gray-300 bg-gray-50"
-                        : "border-gray-300 bg-gray-50"
-                    }`}
-                  >
-                    <div className="font-bold">{task.task}</div>
-                    <div className="text-gray-600">Due: {task.dueDate}</div>
-                    <div
-                      className={`font-bold ${
-                        task.daysLeft <= 7 ? "text-black" : "text-gray-600"
-                      }`}
-                    >
-                      {task.daysLeft} days left
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Recent Activities */}
-            <div className="border-2 border-black p-4 bg-white">
-              <h3 className="font-bold mb-3">RECENT ACTIVITIES</h3>
-              <div className="space-y-3">
-                {recentActivities.map((activity, index) => (
-                  <div
-                    key={index}
-                    className="border-b border-gray-200 pb-2 last:border-b-0"
-                  >
-                    <div className="flex justify-between items-start">
-                      <div className="text-xs">
-                        <div className="font-bold">{activity.action}</div>
-                        <div className="text-gray-600">{activity.date}</div>
-                      </div>
-                      <div
-                        className={`text-xs font-bold ${
-                          activity.status === "success"
-                            ? "text-black"
-                            : "text-black"
-                        }`}
-                      >
-                        {activity.amount}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Quick Actions */}
-            <div className="border-2 border-black p-4 bg-white">
-              <h3 className="font-bold mb-3">QUICK ACTIONS</h3>
-              <div className="space-y-2">
-                <button className="w-full bg-black text-white py-2 text-sm hover:bg-gray-800">
-                  SUBMIT MONTHLY REPORT
-                </button>
-                <button className="w-full border border-black py-2 text-sm hover:bg-gray-100">
-                  VIEW INVESTOR FEEDBACK
-                </button>
-                <button className="w-full border border-black py-2 text-sm hover:bg-gray-100">
-                  REQUEST FUND WITHDRAWAL
-                </button>
-              </div>
-            </div>
+            {activeTab === "investors" && (
+              <InvestorsComponent
+                startupName={currentStartup.name}
+                totalInvestors={currentStartup.nftsSold}
+                totalInvestment={currentStartup.fundingRaised}
+                onInvestorAction={(investorId, action) => {
+                  console.log("Investor action:", investorId, action);
+                  // Handle investor action logic here
+                }}
+              />
+            )}
           </div>
         </div>
       </div>
-      
+
       <FounderFooter />
+
+      {/* Collateral Top-Up Modal */}
+      <CollateralTopUpModal
+        isOpen={isTopUpModalOpen}
+        onClose={() => setIsTopUpModalOpen(false)}
+        startup={startups[selectedStartup]}
+        onTopUp={handleTopUp}
+      />
+
+      {/* Funding Withdrawal Modal */}
+      <FundingWithdrawalModal
+        isOpen={isWithdrawalModalOpen}
+        onClose={() => setIsWithdrawalModalOpen(false)}
+        startupName={currentStartup.name}
+        availableFunds={currentStartup.fundingRaised * 0.8}
+        totalRaised={currentStartup.fundingRaised}
+        onWithdrawalRequest={(request) => {
+          console.log("Withdrawal request submitted:", request);
+          // Handle withdrawal request logic here
+        }}
+      />
     </div>
   );
 };

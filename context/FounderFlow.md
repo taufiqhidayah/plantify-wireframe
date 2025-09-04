@@ -117,7 +117,7 @@ Namun perlu diingat: Ini bukan "dana gratis"—Anda berkomitmen memberikan profi
 - Pengalaman bisnis sebelumnya
 - Kisah sukses atau pencapaian
 
-### Langkah 3: Penilaian Jaminan Aset (_Asset Collateral Assessment_)
+### Langkah 3: Sistem Jaminan Fleksibel (_Flexible Collateral System_)
 
 **Perhitungan Kebutuhan Jaminan (_Collateral Requirement_)**
 
@@ -127,9 +127,15 @@ Minimum jaminan = A × 12 bulan
 **Contoh:**
 Jika komitmen profit sharing \$300/bulan, maka minimum jaminan = \$300 × 12 = \$3,600 ckUSDC
 
-**Jenis Aset Jaminan yang Diterima: Sistem ckUSDC**
+**Sistem Top-Up Bertahap (_Gradual Top-Up System_)**
 
-Platform menggunakan sistem jaminan yang sepenuhnya _on-chain_ dalam ckUSDC untuk stabilitas nilai, dengan dua opsi pembayaran:
+Platform menggunakan sistem jaminan yang fleksibel dengan opsi top-up bertahap:
+
+- **Top-Up Parsial**: Founder dapat menyetor jaminan secara bertahap sesuai kemampuan finansial.
+- **Status Startup**: Startup hanya menjadi **AKTIF** setelah jaminan penuh terpenuhi.
+- **Status Sementara**: Startup dengan jaminan parsial berstatus **PENDING** (tidak dapat meluncurkan NFT).
+
+**Opsi Pembayaran Jaminan:**
 
 - **Opsi A: Bayar dengan ICP**
   - Founder mentransfer ICP yang otomatis dikonversi ke ckUSDC.
@@ -151,12 +157,18 @@ Platform menggunakan sistem jaminan yang sepenuhnya _on-chain_ dalam ckUSDC untu
 
 - **Jaminan minimum**: 12 bulan profit sharing dalam ckUSDC.
 - **Buffer tambahan**: 10% ekstra untuk biaya penanganan dan operasional.
-- **Periode penguncian (_lock period_)**: 36 bulan penuh.
+- **Periode penguncian (_lock period_)**: 36 bulan penuh (dimulai saat startup aktif).
+- **Top-up minimum**: Tidak ada batasan minimum untuk top-up parsial.
 
 **Contoh Perhitungan:**
 Komitmen profit sharing: \$500 per bulan
 Kebutuhan 12 bulan: \$6,000 ckUSDC
 Dengan buffer 10%: \$6,000 + \$600 = \$6,600 ckUSDC total
+
+**Contoh Top-Up Bertahap:**
+- Top-up 1: \$2,000 ckUSDC (Status: PENDING - 30% complete)
+- Top-up 2: \$3,000 ckUSDC (Status: PENDING - 76% complete)  
+- Top-up 3: \$1,600 ckUSDC (Status: AKTIF - 100% complete)
 
 ### Langkah 4: Tinjauan Platform
 
@@ -165,7 +177,6 @@ Dengan buffer 10%: \$6,000 + \$600 = \$6,600 ckUSDC total
 - **Verifikasi Dokumen**: Tim platform memeriksa kelengkapan dan validitas dokumen.
 - **Penilaian Bisnis**: Evaluasi kelayakan bisnis dan realistis tidaknya proyeksi.
 - **Penilaian Risiko**: Platform memberikan skor risiko berdasarkan kriteria internal.
-- **Verifikasi Jaminan**: Konfirmasi aset jaminan memenuhi persyaratan.
 - **Wawancara Akhir**: Panggilan video dengan founder untuk klarifikasi.
 
 **Kriteria Penilaian:**
@@ -177,22 +188,36 @@ Dengan buffer 10%: \$6,000 + \$600 = \$6,600 ckUSDC total
 
 **Kemungkinan Hasil:**
 
-- **✅ Disetujui**: Dapat langsung melanjutkan ke peluncuran NFT.
+- **✅ Disetujui**: Dapat langsung melanjutkan ke sistem top-up jaminan.
 - **⚠️ Persetujuan Bersyarat**: Butuh perbaikan minor (dokumen tambahan, klarifikasi).
 - **❌ Ditolak**: Tidak memenuhi kriteria (dapat mengajukan kembali setelah 6 bulan).
 
-### Langkah 5: Penguncian Jaminan & Pengaturan NFT
+### Langkah 5: Sistem Top-Up & Aktivasi Startup
 
-**Proses Penguncian Jaminan (_Collateral Locking_)**
+**Proses Top-Up Jaminan (_Collateral Top-Up Process_)**
 
+- Founder dapat melakukan top-up kapan saja melalui dashboard platform.
 - Founder memilih opsi pembayaran (konversi ICP atau ckUSDC langsung).
 - Jika ICP: Sistem menampilkan nilai konversi _real-time_ dengan _countdown timer_.
 - Jika ckUSDC: Transfer langsung ke _smart contract_ platform.
-- _Smart contract_ mengunci ckUSDC dengan kunci waktu (time-lock) 3 tahun.
-- Platform memverifikasi jaminan telah masuk dan memenuhi persyaratan minimum.
-- _Smart contract_ diatur untuk pemotongan otomatis jika pembayaran profit sharing gagal.
+- Platform menampilkan progress jaminan secara real-time (X% dari total yang dibutuhkan).
 
-**Konfigurasi NFT**
+**Status Startup & Aktivasi**
+
+- **Status PENDING**: Jaminan belum mencapai 100% - startup tidak dapat meluncurkan NFT.
+- **Status AKTIF**: Jaminan mencapai 100% - startup dapat meluncurkan NFT dan mulai operasi.
+- **Periode Lock**: Jaminan baru terkunci 36 bulan setelah startup menjadi AKTIF.
+- **Smart Contract**: Diatur untuk pemotongan otomatis jika pembayaran profit sharing gagal.
+
+**Dashboard Founder & Tracking Progress**
+
+- **Progress Bar**: Menampilkan persentase jaminan yang sudah disetor secara real-time.
+- **Status Indicator**: Visual indicator untuk status PENDING/AKTIF.
+- **Top-Up History**: Riwayat semua top-up yang pernah dilakukan.
+- **Remaining Amount**: Jumlah ckUSDC yang masih dibutuhkan untuk aktivasi.
+- **Estimated Timeline**: Estimasi waktu untuk mencapai 100% berdasarkan top-up terakhir.
+
+**Konfigurasi NFT (Hanya untuk Startup AKTIF)**
 
 - Tentukan total pasokan NFT (_supply_) (direkomendasikan 50-500 NFT).
 - Hitung harga per NFT dalam ckUSDC berdasarkan formula platform.

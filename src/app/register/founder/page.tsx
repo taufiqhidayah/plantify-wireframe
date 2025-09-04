@@ -1,10 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import FounderNavbar from "@/components/founder/FounderNavbar";
+import FounderFooter from "@/components/founder/FounderFooter";
+import { useDemoMode } from "@/context/DemoModeContext";
 
 const PlantifyFounderRegistration = () => {
   const router = useRouter();
+  const { isDemoMode } = useDemoMode();
 
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -21,14 +25,32 @@ const PlantifyFounderRegistration = () => {
     linkedIn: "",
 
     // Verification Documents
-    ktpNumber: "",
-    npwpNumber: "",
+    idNumber: "",
+    taxNumber: "",
 
     // Terms Agreement
     agreeTerms: false,
     agreeRisks: false,
     agreeCommitment: false,
   });
+
+  // Set demo mode defaults when demo mode is enabled
+  useEffect(() => {
+    if (isDemoMode) {
+      setFormData(prev => ({
+        ...prev,
+        fullName: "John Smith",
+        email: "john.smith@example.com",
+        phone: "+1 555 123 4567",
+        address: "123 Main Street, New York, NY 10001, USA",
+        experience: "5+ years in software development and product management. Led two successful startup launches with combined revenue of $2M+.",
+        expertise: "Full-stack development, product strategy, team leadership, and business development.",
+        linkedIn: "https://linkedin.com/in/johnsmith",
+        idNumber: "123-45-6789",
+        taxNumber: "12-3456789"
+      }));
+    }
+  }, [isDemoMode]);
 
   const steps = [
     { number: 1, title: "Personal Information", icon: "👤" },
@@ -37,7 +59,7 @@ const PlantifyFounderRegistration = () => {
     { number: 4, title: "Terms & Agreement", icon: "✅" },
   ];
 
-  const handleInputChange = (field, value) => {
+  const handleInputChange = (field: string, value: string | boolean) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
@@ -64,7 +86,7 @@ const PlantifyFounderRegistration = () => {
       case 2:
         return formData.experience && formData.expertise;
       case 3:
-        return formData.ktpNumber && formData.npwpNumber;
+        return formData.idNumber && formData.taxNumber;
       case 4:
         return (
           formData.agreeTerms && formData.agreeRisks && formData.agreeCommitment
@@ -125,7 +147,7 @@ const PlantifyFounderRegistration = () => {
                       onChange={(e) =>
                         handleInputChange("phone", e.target.value)
                       }
-                      placeholder="+62 812 3456 7890"
+                      placeholder="+1 555 123 4567"
                     />
                   </div>
                 </div>
@@ -190,7 +212,7 @@ const PlantifyFounderRegistration = () => {
                     onChange={(e) =>
                       handleInputChange("previousBusinesses", e.target.value)
                     }
-                    placeholder="List any previous businesses you've started or managed (optional)"
+                    placeholder="List any previous businesses you&apos;ve started or managed (optional)"
                   />
                 </div>
 
@@ -246,31 +268,31 @@ const PlantifyFounderRegistration = () => {
               <div className="space-y-4">
                 <div>
                   <label className="block font-bold mb-2">
-                    KTP (ID Card) Number *
+                    Government ID Number *
                   </label>
                   <input
                     type="text"
                     className="w-full border-2 border-black p-2"
-                    value={formData.ktpNumber}
+                    value={formData.idNumber}
                     onChange={(e) =>
-                      handleInputChange("ktpNumber", e.target.value)
+                      handleInputChange("idNumber", e.target.value)
                     }
-                    placeholder="Enter your KTP number"
-                    maxLength="16"
+                    placeholder="Enter your government-issued ID number (SSN, Passport, etc.)"
+                    maxLength={20}
                   />
                 </div>
 
                 <div>
-                  <label className="block font-bold mb-2">NPWP Number *</label>
+                  <label className="block font-bold mb-2">Tax ID Number *</label>
                   <input
                     type="text"
                     className="w-full border-2 border-black p-2"
-                    value={formData.npwpNumber}
+                    value={formData.taxNumber}
                     onChange={(e) =>
-                      handleInputChange("npwpNumber", e.target.value)
+                      handleInputChange("taxNumber", e.target.value)
                     }
-                    placeholder="Enter your personal NPWP number"
-                    maxLength="15"
+                    placeholder="Enter your tax identification number"
+                    maxLength={20}
                   />
                 </div>
 
@@ -279,7 +301,7 @@ const PlantifyFounderRegistration = () => {
                   <div className="space-y-3">
                     <div className="border border-gray-400 border-dashed p-4 text-center">
                       <div className="text-gray-600 mb-2">
-                        KTP/ID Card Photo
+                        Government ID Document
                       </div>
                       <input
                         type="file"
@@ -289,7 +311,7 @@ const PlantifyFounderRegistration = () => {
                     </div>
 
                     <div className="border border-gray-400 border-dashed p-4 text-center">
-                      <div className="text-gray-600 mb-2">NPWP Document</div>
+                      <div className="text-gray-600 mb-2">Tax ID Document</div>
                       <input
                         type="file"
                         accept="image/*,.pdf"
@@ -401,9 +423,9 @@ const PlantifyFounderRegistration = () => {
             </div>
 
             <div className="border-2 border-black p-4 bg-blue-50">
-              <div className="font-bold mb-2">🚀 WHAT'S NEXT?</div>
+              <div className="font-bold mb-2">🚀 WHAT&apos;S NEXT?</div>
               <div className="text-sm">
-                After completing registration, you'll be able to create startup
+                After completing registration, you&apos;ll be able to create startup
                 listings, access founder tools, and join the founder community.
               </div>
             </div>
@@ -418,16 +440,7 @@ const PlantifyFounderRegistration = () => {
   return (
     <div className="min-h-screen bg-white text-black font-mono">
       {/* Header */}
-      <header className="border-b-2 border-black p-4">
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <div className="text-2xl font-bold border-2 border-black px-4 py-2">
-            PLANTIFY
-          </div>
-          <div className="text-sm border border-black px-3 py-1">
-            Connected: [Internet Identity]
-          </div>
-        </div>
-      </header>
+      <FounderNavbar />
 
       {/* Progress Steps */}
       <div className="border-b border-black p-4 bg-gray-50">
@@ -511,27 +524,7 @@ const PlantifyFounderRegistration = () => {
       </div>
 
       {/* Footer */}
-      <footer className="border-t-2 border-black py-8 px-4 mt-12">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
-            <div>
-              <div className="font-bold mb-2">NEED HELP?</div>
-              <div>Check our founder guide or contact support</div>
-            </div>
-            <div>
-              <div className="font-bold mb-2">SECURE REGISTRATION</div>
-              <div>All data is encrypted and stored securely</div>
-            </div>
-            <div>
-              <div className="font-bold mb-2">QUESTIONS?</div>
-              <div>Join our founder community for support</div>
-            </div>
-          </div>
-          <div className="border-t border-black mt-6 pt-6">
-            <div>© 2024 Plantify. Built on Internet Computer Protocol.</div>
-          </div>
-        </div>
-      </footer>
+      <FounderFooter />
     </div>
   );
 };
