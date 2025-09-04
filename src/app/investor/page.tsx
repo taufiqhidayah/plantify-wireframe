@@ -231,7 +231,7 @@ const PlantifyInvestorDashboard = () => {
 
   const availableStartups = allStartups.filter(startup => startup.id >= 4);
   const portfolioStartups = allStartups.filter(startup => startup.id <= 3);
-  
+
   // Search functionality
   const filteredStartups = availableStartups.filter(startup =>
     startup.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -292,13 +292,13 @@ const PlantifyInvestorDashboard = () => {
 
     // Here would be the actual blockchain transaction
     alert(`Investment of $${investmentAmount} in ${selectedStartup?.name} confirmed!`);
-    
+
     // Reset modal and add to portfolio
     setShowInvestmentModal(false);
     setSelectedStartup(null);
     setInvestmentAmount(0);
     setNftQuantity(1);
-    
+
     // In a real app, this would update the portfolio data
     // and trigger blockchain transaction
   };
@@ -365,13 +365,13 @@ const PlantifyInvestorDashboard = () => {
                 ✓ Matches your risk tolerance and sector preference
               </div>
               <div className="flex gap-2">
-                <button 
+                <button
                   onClick={() => handleInvestNow(allStartups[5])}
                   className="bg-black text-white px-4 py-2 text-sm flex-1 hover:bg-gray-800"
                 >
                   INVEST NOW
                 </button>
-                <button 
+                <button
                   onClick={() => router.push(`/investor/startup/ecofarm-solutions`)}
                   className="border border-black px-4 py-2 text-sm hover:bg-gray-100"
                 >
@@ -398,13 +398,13 @@ const PlantifyInvestorDashboard = () => {
                 ✓ High growth potential in your preferred sector
               </div>
               <div className="flex gap-2">
-                <button 
+                <button
                   onClick={() => handleInvestNow(allStartups[6])}
                   className="bg-black text-white px-4 py-2 text-sm flex-1 hover:bg-gray-800"
                 >
                   INVEST NOW
                 </button>
-                <button 
+                <button
                   onClick={() => router.push(`/investor/startup/smartcafe-tech`)}
                   className="border border-black px-4 py-2 text-sm hover:bg-gray-100"
                 >
@@ -414,7 +414,7 @@ const PlantifyInvestorDashboard = () => {
             </div>
           </div>
           <div className="text-center mt-4">
-            <button 
+            <button
               onClick={() => setActiveTab("marketplace")}
               className="border border-black px-6 py-2 text-sm hover:bg-gray-100"
             >
@@ -428,28 +428,44 @@ const PlantifyInvestorDashboard = () => {
           QUICK ACTIONS
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div 
-            onClick={() => setActiveTab("marketplace")}
+          <div
+            onClick={() => {
+              setActiveTab("marketplace");
+              router.push("/marketplace");
+            }}
             className="border border-black p-4 text-center cursor-pointer hover:bg-gray-50"
           >
             <div className="text-2xl mb-2">📊</div>
-            <div className="font-bold mb-1">Browse Startups</div>
+            <div className="font-bold mb-1" onClick={() => {
+              setActiveTab("marketplace");
+              router.push("/marketplace");
+            }}>Browse Startups</div>
             <div className="text-sm">Find new investment opportunities</div>
           </div>
-          <div 
-            onClick={() => setActiveTab("voting")}
+          <div
+            onClick={() => {
+              setActiveTab("voting");
+              router.push("/investor/dashboard/voting");
+            }}
             className="border border-black p-4 text-center cursor-pointer hover:bg-gray-50"
           >
             <div className="text-2xl mb-2">🗳️</div>
-            <div className="font-bold mb-1">Pending Votes</div>
+            <div className="font-bold mb-1" onClick={() => {
+              setActiveTab("voting");
+              router.push("/investor/dashboard/voting");
+            }}>Pending Votes</div>
             <div className="text-sm">Review {investorData.votingPending} startup reports</div>
           </div>
-          <div 
-            onClick={() => alert("Add Funds functionality coming soon!")}
+          <div
+            onClick={() => {
+              alert("Add Funds functionality coming soon!");
+            }}
             className="border border-black p-4 text-center cursor-pointer hover:bg-gray-50"
           >
             <div className="text-2xl mb-2">💰</div>
-            <div className="font-bold mb-1">Add Funds</div>
+            <div className="font-bold mb-1" onClick={() => {
+              alert("Add Funds functionality coming soon!");
+            }}>Add Funds</div>
             <div className="text-sm">Deposit more ckUSDC</div>
           </div>
         </div>
@@ -496,7 +512,7 @@ const PlantifyInvestorDashboard = () => {
             {portfolioStartups.length} active investments
           </div>
         </div>
-        
+
         <div className="space-y-4">
           {portfolioStartups.map((investment) => (
             <div key={investment.id} className="border-2 border-black p-4">
@@ -532,8 +548,8 @@ const PlantifyInvestorDashboard = () => {
                     ${investment.totalReturns}
                   </div>
                   <div className="text-xs">
-                    {investment.totalReturns && investment.invested 
-                      ? ((investment.totalReturns / investment.invested) * 100).toFixed(1) 
+                    {investment.totalReturns && investment.invested
+                      ? ((investment.totalReturns / investment.invested) * 100).toFixed(1)
                       : '0'}% ROI
                   </div>
                 </div>
@@ -541,8 +557,8 @@ const PlantifyInvestorDashboard = () => {
                   <div className="text-xs font-bold mb-1">PROGRESS</div>
                   <div className="text-lg font-bold">{investment.progress}%</div>
                   <div className="border border-black h-2">
-                    <div 
-                      className="bg-black h-full" 
+                    <div
+                      className="bg-black h-full"
                       style={{ width: `${investment.progress}%` }}
                     ></div>
                   </div>
@@ -551,7 +567,7 @@ const PlantifyInvestorDashboard = () => {
 
               <div className="flex flex-wrap gap-2">
                 {investment.hasDetails && (
-                  <button 
+                  <button
                     onClick={() => router.push(`/investor/startup/${investment.detailSlug}`)}
                     className="border border-black px-3 py-1 text-sm hover:bg-gray-100"
                   >
@@ -598,10 +614,10 @@ const PlantifyInvestorDashboard = () => {
                 className="w-full border-2 border-black p-2 text-sm"
               />
             </div>
-            
+
             {/* Filter Button */}
             <div>
-              <button 
+              <button
                 onClick={() => setShowFilterPopup(true)}
                 className="bg-black text-white px-6 py-2 text-sm hover:bg-gray-800 border-2 border-black"
               >
@@ -609,7 +625,7 @@ const PlantifyInvestorDashboard = () => {
               </button>
             </div>
           </div>
-          
+
           {/* Active Filters Display */}
           <div className="border-t border-black pt-3 mt-4">
             <div className="text-sm font-bold mb-2">Active Filters:</div>
@@ -633,7 +649,7 @@ const PlantifyInvestorDashboard = () => {
               <div className="h-32 border border-black bg-gray-100 flex items-center justify-center mb-4">
                 [STARTUP IMAGE]
               </div>
-              
+
               <h4 className="text-lg font-bold mb-2">{startup.name}</h4>
               <div className="text-sm border border-black px-2 py-1 inline-block mb-3">
                 {startup.sector}
@@ -660,8 +676,8 @@ const PlantifyInvestorDashboard = () => {
                   <span>{startup.fundingProgress}%</span>
                 </div>
                 <div className="border border-black h-3">
-                  <div 
-                    className="bg-black h-full" 
+                  <div
+                    className="bg-black h-full"
                     style={{ width: `${startup.fundingProgress}%` }}
                   ></div>
                 </div>
@@ -671,14 +687,14 @@ const PlantifyInvestorDashboard = () => {
               </div>
 
               <div className="flex gap-2">
-                <button 
+                <button
                   onClick={() => handleInvestNow(startup)}
                   className="bg-black text-white px-4 py-2 text-sm flex-1 hover:bg-gray-800"
                 >
                   INVEST NOW
                 </button>
                 {startup.hasDetails && (
-                  <button 
+                  <button
                     onClick={() => router.push(`/investor/startup/${startup.detailSlug}`)}
                     className="border border-black px-4 py-2 text-sm hover:bg-gray-100"
                   >
@@ -691,7 +707,7 @@ const PlantifyInvestorDashboard = () => {
         </div>
 
         <div className="text-center mt-6">
-          <button 
+          <button
             onClick={() => alert("More startups coming soon! Currently showing all available startups.")}
             className="bg-black text-white px-8 py-3 hover:bg-gray-800"
           >
@@ -699,21 +715,21 @@ const PlantifyInvestorDashboard = () => {
           </button>
         </div>
       </div>
-      
+
       {/* Filter Popup Modal */}
       {showFilterPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white border-4 border-black p-6 max-w-2xl mx-4 max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-xl font-bold">🔍 ADVANCED FILTERS</h3>
-              <button 
+              <button
                 onClick={() => setShowFilterPopup(false)}
                 className="text-2xl hover:text-gray-600"
               >
                 ✕
               </button>
             </div>
-            
+
             <div className="space-y-6">
               {/* Sector Filter */}
               <div>
@@ -728,7 +744,7 @@ const PlantifyInvestorDashboard = () => {
                   <option value="Manufacturing">Manufacturing</option>
                 </select>
               </div>
-              
+
               {/* Investment Range Filter */}
               <div>
                 <label className="block text-sm font-bold mb-2">Investment Range</label>
@@ -740,7 +756,7 @@ const PlantifyInvestorDashboard = () => {
                   <option value="1000+">$1,000+</option>
                 </select>
               </div>
-              
+
               {/* Return Rate Filter */}
               <div>
                 <label className="block text-sm font-bold mb-2">Minimum Return Rate</label>
@@ -752,7 +768,7 @@ const PlantifyInvestorDashboard = () => {
                   <option value="20">20%+ annually</option>
                 </select>
               </div>
-              
+
               {/* Funding Progress Filter */}
               <div>
                 <label className="block text-sm font-bold mb-2">Funding Progress</label>
@@ -764,7 +780,7 @@ const PlantifyInvestorDashboard = () => {
                   <option value="75-100">75% - 100%</option>
                 </select>
               </div>
-              
+
               {/* Sort By */}
               <div>
                 <label className="block text-sm font-bold mb-2">Sort By</label>
@@ -776,7 +792,7 @@ const PlantifyInvestorDashboard = () => {
                   <option value="newest">Newest First</option>
                 </select>
               </div>
-              
+
               {/* Additional Filters */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -789,7 +805,7 @@ const PlantifyInvestorDashboard = () => {
                     <option value="other">Other Cities</option>
                   </select>
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-bold mb-2">Risk Level</label>
                   <select className="w-full border-2 border-black p-2 text-sm">
@@ -801,16 +817,16 @@ const PlantifyInvestorDashboard = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Action Buttons */}
             <div className="flex gap-3 mt-8 pt-6 border-t-2 border-black">
-              <button 
+              <button
                 onClick={() => setShowFilterPopup(false)}
                 className="flex-1 border-2 border-black py-2 font-bold hover:bg-gray-100"
               >
                 CANCEL
               </button>
-              <button 
+              <button
                 onClick={() => setShowFilterPopup(false)}
                 className="flex-1 bg-black text-white py-2 font-bold hover:bg-gray-800"
               >
@@ -825,44 +841,143 @@ const PlantifyInvestorDashboard = () => {
 
   const renderVotingTab = () => (
     <div className="space-y-6">
+      {/* Voting Header & Status */}
+      {/* <div className="border-2 border-black p-6 bg-yellow-50">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-xl font-bold bg-orange-600 text-white p-2">
+            🗳️ MONTHLY VOTING STATUS
+          </h3>
+          <div className="text-right">
+            <div className="text-sm font-bold text-orange-600">
+              Voting Period: September 11-17, 2024
+            </div>
+            <div className="text-xs text-gray-600">
+              {investorData.votingPending} reports pending your vote
+            </div>
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="text-center p-3 border border-black bg-white">
+            <div className="text-2xl font-bold text-green-600">
+              {portfolioStartups.filter(s => s.nextVote === "1 day").length}
+            </div>
+            <div className="text-xs">Due Today</div>
+          </div>
+          <div className="text-center p-3 border border-black bg-white">
+            <div className="text-2xl font-bold text-orange-600">
+              {portfolioStartups.filter(s => s.nextVote === "2 days").length}
+            </div>
+            <div className="text-xs">Due Tomorrow</div>
+          </div>
+          <div className="text-center p-3 border border-black bg-white">
+            <div className="text-2xl font-bold text-blue-600">
+              {portfolioStartups.filter(s => s.nextVote === "5 days").length}
+            </div>
+            <div className="text-xs">Due This Week</div>
+          </div>
+          <div className="text-center p-3 border border-black bg-white">
+            <div className="text-2xl font-bold text-purple-600">
+              {portfolioStartups.length}
+            </div>
+            <div className="text-xs">Total Active</div>
+          </div>
+        </div>
+      </div> */}
+
+      {/* Pending Votes */}
       <div className="border-2 border-black p-6">
         <h3 className="text-xl font-bold mb-4 bg-black text-white p-2">
-          PENDING VOTES
+          PENDING VOTES - SEPTEMBER 2024
         </h3>
 
         <div className="space-y-4">
-          {portfolioData.slice(0, 3).map((investment) => (
+          {portfolioStartups.map((investment) => (
             <div key={investment.id} className="border-2 border-black p-4">
               <div className="flex justify-between items-start mb-3">
                 <div>
                   <h4 className="text-lg font-bold">{investment.name}</h4>
-                  <div className="text-sm text-gray-600">Monthly Progress Report - September 2024</div>
+                  <div className="text-sm text-gray-600">
+                    Monthly Progress Report - September 2024
+                  </div>
+                  <div className="text-xs text-gray-500 mt-1">
+                    📍 {investment.location} • Founded: {investment.founded}
+                  </div>
                 </div>
-                <div className="text-sm font-bold text-orange-600">
-                  Due in {investment.nextVote}
+                <div className="text-right">
+                  <div className="text-sm font-bold text-orange-600 mb-1">
+                    Due in {investment.nextVote}
+                  </div>
+                  <div className="text-xs bg-blue-100 border border-blue-500 px-2 py-1">
+                    {investment.nftCount} NFTs • ${investment.invested} invested
+                  </div>
                 </div>
               </div>
 
+              {/* Report Summary */}
               <div className="border border-black p-3 mb-3 bg-gray-50">
-                <div className="text-sm font-bold mb-2">REPORT SUMMARY:</div>
-                <div className="text-sm">
-                  • Revenue: $12,500 (target: $10,000) ✅<br/>
-                  • Expenses: $8,200 (budget: $8,500) ✅<br/>
-                  • Net Profit: $4,300 (growth: +15% from last month)<br/>
-                  • Customer Growth: +45 new customers<br/>
-                  • Next Month Target: $13,000 revenue
+                <div className="text-sm font-bold mb-2">📊 REPORT SUMMARY:</div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span>Revenue:</span>
+                      <span className="font-bold">${investment.monthlyReturns ? (investment.monthlyReturns * 12).toLocaleString() : '0'}</span>
+                    </div>
+                    <div className="flex justify-between mb-1">
+                      <span>Monthly Returns:</span>
+                      <span className="font-bold text-green-600">${investment.monthlyReturns}</span>
+                    </div>
+                    <div className="flex justify-between mb-1">
+                      <span>Total Returns:</span>
+                      <span className="font-bold text-blue-600">${investment.totalReturns}</span>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-1">
+                      <span>Progress:</span>
+                      <span className="font-bold">{investment.progress}%</span>
+                    </div>
+                    <div className="flex justify-between mb-1">
+                      <span>Status:</span>
+                      <span className="font-bold text-green-600">{investment.status}</span>
+                    </div>
+                    <div className="flex justify-between mb-1">
+                      <span>ROI:</span>
+                      <span className="font-bold text-purple-600">
+                        {investment.totalReturns && investment.invested
+                          ? ((investment.totalReturns / investment.invested) * 100).toFixed(1)
+                          : '0'}%
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex gap-3">
-                <button className="bg-green-600 text-white px-6 py-2 text-sm hover:bg-green-700">
-                  ✓ APPROVE
+              {/* Voting Actions */}
+              <div className="flex flex-wrap gap-3">
+                <button
+                  onClick={() => router.push(`/investor/dashboard/voting`)}
+                  className="bg-green-600 text-white px-6 py-2 text-sm hover:bg-green-700 font-bold"
+                >
+                  ✓ APPROVE REPORT
                 </button>
-                <button className="bg-red-600 text-white px-6 py-2 text-sm hover:bg-red-700">
-                  ✗ REJECT
+                <button
+                  onClick={() => router.push(`/investor/dashboard/voting`)}
+                  className="bg-red-600 text-white px-6 py-2 text-sm hover:bg-red-700 font-bold"
+                >
+                  ✗ REJECT REPORT
                 </button>
-                <button className="border border-black px-4 py-2 text-sm hover:bg-gray-100">
-                  View Full Report
+                <button
+                  onClick={() => router.push(`/investor/startup/${investment.detailSlug}`)}
+                  className="border border-black px-4 py-2 text-sm hover:bg-gray-100"
+                >
+                  📋 View Full Report
+                </button>
+                <button
+                  onClick={() => router.push(`/investor/startup/${investment.detailSlug}`)}
+                  className="border border-black px-4 py-2 text-sm hover:bg-gray-100"
+                >
+                  🏢 Startup Details
                 </button>
               </div>
             </div>
@@ -870,13 +985,126 @@ const PlantifyInvestorDashboard = () => {
         </div>
       </div>
 
-      <div className="border-2 border-black p-4 bg-blue-50">
-        <div className="font-bold mb-2">ℹ️ VOTING GUIDELINES</div>
-        <div className="text-sm space-y-1">
-          <div>• Review monthly reports carefully before voting</div>
-          <div>• Approve if targets are met and reporting is transparent</div>
-          <div>• Reject if significant issues or missed targets</div>
-          <div>• Your vote affects whether profit sharing is distributed</div>
+      {/* Voting Guidelines */}
+      <div className="border-2 border-black p-6 bg-blue-50">
+        <h3 className="text-xl font-bold mb-4 bg-blue-600 text-white p-2">
+          📋 VOTING GUIDELINES & CRITERIA
+        </h3>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h4 className="font-bold mb-3 text-green-800">✅ APPROVE IF:</h4>
+            <div className="text-sm space-y-2 text-green-700">
+              <div className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>Financial targets are met or exceeded</span>
+              </div>
+              <div className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>Operational milestones achieved</span>
+              </div>
+              <div className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>Reporting is transparent and complete</span>
+              </div>
+              <div className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>Challenges have clear mitigation plans</span>
+              </div>
+              <div className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>Business growth metrics are positive</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-bold mb-3 text-red-800">❌ REJECT IF:</h4>
+            <div className="text-sm space-y-2 text-red-700">
+              <div className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>Significant revenue shortfall without explanation</span>
+              </div>
+              <div className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>Budget overspend with no justification</span>
+              </div>
+              <div className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>Declining business metrics</span>
+              </div>
+              <div className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>Incomplete or misleading information</span>
+              </div>
+              <div className="flex items-start">
+                <span className="mr-2">•</span>
+                <span>No clear plan to address challenges</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Voting Process Info */}
+      <div className="border-2 border-black p-6 bg-green-50">
+        <h3 className="text-xl font-bold mb-4 bg-green-600 text-white p-2">
+          ⏰ VOTING PROCESS TIMELINE
+        </h3>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm">
+          <div className="text-center p-3 border border-black bg-white">
+            <div className="text-lg font-bold text-blue-600 mb-1">1-10th</div>
+            <div className="text-xs">Founder submits monthly report</div>
+          </div>
+          <div className="text-center p-3 border border-black bg-white">
+            <div className="text-lg font-bold text-orange-600 mb-1">11-17th</div>
+            <div className="text-xs">Community voting period (7 days)</div>
+          </div>
+          <div className="text-center p-3 border border-black bg-white">
+            <div className="text-lg font-bold text-purple-600 mb-1">18-20th</div>
+            <div className="text-xs">Platform processes results</div>
+          </div>
+          <div className="text-center p-3 border border-black bg-white">
+            <div className="text-lg font-bold text-green-600 mb-1">21st</div>
+            <div className="text-xs">Profit sharing payment (if approved)</div>
+          </div>
+        </div>
+
+        <div className="mt-4 p-3 border border-green-500 bg-white">
+          <div className="text-sm font-bold text-green-800 mb-2">🎯 VOTING IMPACT:</div>
+          <div className="text-sm text-green-700">
+            <strong>≥50% Approve:</strong> Profit sharing released untuk bulan tersebut dalam ckUSDC<br />
+            <strong>&lt;50% Approve:</strong> Profit sharing ditahan, startup harus improve dan resubmit
+          </div>
+        </div>
+      </div>
+
+      {/* AI Analysis Integration */}
+      <div className="border-2 border-black p-6 bg-purple-50">
+        <h3 className="text-xl font-bold mb-4 bg-purple-600 text-white p-2">
+          🤖 AI ANALYSIS INTEGRATION
+        </h3>
+
+        <div className="text-sm space-y-3">
+          <div className="flex items-start">
+            <span className="text-purple-600 mr-2">🔍</span>
+            <span>
+              <strong>AI Compliance Score:</strong> Voting dilengkapi dengan AI analysis yang membandingkan laporan founder dengan kriteria objektif
+            </span>
+          </div>
+          <div className="flex items-start">
+            <span className="text-purple-600 mr-2">⚠️</span>
+            <span>
+              <strong>Auto-Hold:</strong> Jika AI compliance score di bawah threshold minimum, profit sharing otomatis ditahan hingga perbaikan dilakukan
+            </span>
+          </div>
+          <div className="flex items-start">
+            <span className="text-purple-600 mr-2">📊</span>
+            <span>
+              <strong>Objective Analysis:</strong> AI membandingkan financial data, operational metrics, dan market conditions dengan industry benchmarks
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -891,12 +1119,18 @@ const PlantifyInvestorDashboard = () => {
             PLANTIFY
           </div>
           <div className="flex items-center space-x-4">
-            <div className="text-sm">Welcome, [Investor Name]</div>
+            <div className="text-sm">Welcome, Ahmad Wijaya</div>
             <div className="text-sm border border-black px-3 py-1">
               Balance: $1,250 ckUSDC
             </div>
             <button className="bg-black text-white px-4 py-2 text-sm">
               Add Funds
+            </button>
+            <button
+              onClick={() => router.push('/investor/profile')}
+              className="border border-black px-3 py-1 text-sm hover:bg-gray-100"
+            >
+              👤 Profile
             </button>
           </div>
         </div>
@@ -915,11 +1149,10 @@ const PlantifyInvestorDashboard = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-6 py-4 text-sm font-bold border-r border-black ${
-                activeTab === tab.id
-                  ? "bg-black text-white"
-                  : "hover:bg-gray-100"
-              }`}
+              className={`px-6 py-4 text-sm font-bold border-r border-black ${activeTab === tab.id
+                ? "bg-black text-white"
+                : "hover:bg-gray-100"
+                }`}
             >
               {tab.icon} {tab.label}
             </button>
@@ -934,12 +1167,309 @@ const PlantifyInvestorDashboard = () => {
         {activeTab === "marketplace" && renderMarketplaceTab()}
         {activeTab === "voting" && renderVotingTab()}
         {activeTab === "transactions" && (
-          <div className="border-2 border-black p-6">
-            <h3 className="text-xl font-bold mb-4 bg-black text-white p-2">
-              TRANSACTION HISTORY
-            </h3>
-            <div className="text-center py-12 text-gray-500">
-              Transaction history feature coming soon...
+          <div className="space-y-6">
+            {/* Transaction History Header */}
+            <div className="border-2 border-black p-6 bg-blue-50">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-xl font-bold bg-blue-600 text-white p-2">
+                  💰 TRANSACTION HISTORY
+                </h3>
+                <div className="text-right">
+                  <div className="text-sm font-bold text-blue-600">
+                    Total Transactions: 24
+                  </div>
+                  <div className="text-xs text-gray-600">
+                    Last 30 days
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div className="text-center p-3 border border-black bg-white">
+                  <div className="text-2xl font-bold text-green-600">$2,450</div>
+                  <div className="text-xs">Total Invested</div>
+                </div>
+                <div className="text-center p-3 border border-black bg-white">
+                  <div className="text-2xl font-bold text-blue-600">$187</div>
+                  <div className="text-xs">Total Returns</div>
+                </div>
+                <div className="text-center p-3 border border-black bg-white">
+                  <div className="text-2xl font-bold text-purple-600">12</div>
+                  <div className="text-xs">Active Investments</div>
+                </div>
+                <div className="text-center p-3 border border-black bg-white">
+                  <div className="text-2xl font-bold text-orange-600">$0</div>
+                  <div className="text-xs">Pending Withdrawals</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Transaction Filters */}
+            <div className="border-2 border-black p-4">
+              <div className="flex flex-wrap gap-4 items-center">
+                <div className="flex items-center space-x-2">
+                  <label className="text-sm font-bold">Filter by:</label>
+                  <select className="border border-black px-3 py-1 text-sm">
+                    <option>All Types</option>
+                    <option>Investments</option>
+                    <option>Returns</option>
+                    <option>Withdrawals</option>
+                    <option>Fees</option>
+                  </select>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <label className="text-sm font-bold">Date Range:</label>
+                  <select className="border border-black px-3 py-1 text-sm">
+                    <option>Last 7 days</option>
+                    <option>Last 30 days</option>
+                    <option>Last 3 months</option>
+                    <option>Last 6 months</option>
+                    <option>All time</option>
+                  </select>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <label className="text-sm font-bold">Status:</label>
+                  <select className="border border-black px-3 py-1 text-sm">
+                    <option>All Status</option>
+                    <option>Completed</option>
+                    <option>Pending</option>
+                    <option>Failed</option>
+                  </select>
+                </div>
+                <button className="bg-black text-white px-4 py-1 text-sm hover:bg-gray-800">
+                  🔍 Search
+                </button>
+              </div>
+            </div>
+
+            {/* Transaction List */}
+            <div className="border-2 border-black p-6">
+              <h4 className="text-lg font-bold mb-4 bg-gray-100 p-2 border border-black">
+                RECENT TRANSACTIONS
+              </h4>
+
+              <div className="space-y-3">
+                {/* Transaction Item 1 */}
+                <div className="border border-black p-4 hover:bg-gray-50">
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center space-x-3">
+                      <div className="text-2xl">💰</div>
+                      <div>
+                        <div className="font-bold text-green-600">Investment in EcoFarm Solutions</div>
+                        <div className="text-sm text-gray-600">NFT Purchase • 5 NFTs</div>
+                        <div className="text-xs text-gray-500">Transaction ID: TX-2024-001</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-bold text-red-600">-$250.00</div>
+                      <div className="text-sm text-gray-600">Sep 15, 2024</div>
+                      <div className="text-xs bg-green-100 text-green-800 px-2 py-1 border border-green-500">
+                        ✅ Completed
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Transaction Item 2 */}
+                <div className="border border-black p-4 hover:bg-gray-50">
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center space-x-3">
+                      <div className="text-2xl">💸</div>
+                      <div>
+                        <div className="font-bold text-blue-600">Profit Sharing - SmartCafe Tech</div>
+                        <div className="text-sm text-gray-600">Monthly Returns • 3 NFTs</div>
+                        <div className="text-xs text-gray-500">Transaction ID: TX-2024-002</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-bold text-green-600">+$45.00</div>
+                      <div className="text-sm text-gray-600">Sep 14, 2024</div>
+                      <div className="text-xs bg-green-100 text-green-800 px-2 py-1 border border-green-500">
+                        ✅ Completed
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Transaction Item 3 */}
+                <div className="border border-black p-4 hover:bg-gray-50">
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center space-x-3">
+                      <div className="text-2xl">🏦</div>
+                      <div>
+                        <div className="font-bold text-purple-600">Wallet Top-up</div>
+                        <div className="text-sm text-gray-600">Added Funds • ckUSDC</div>
+                        <div className="text-xs text-gray-500">Transaction ID: TX-2024-003</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-bold text-green-600">+$500.00</div>
+                      <div className="text-sm text-gray-600">Sep 12, 2024</div>
+                      <div className="text-xs bg-green-100 text-green-800 px-2 py-1 border border-green-500">
+                        ✅ Completed
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Transaction Item 4 */}
+                <div className="border border-black p-4 hover:bg-gray-50">
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center space-x-3">
+                      <div className="text-2xl">💳</div>
+                      <div>
+                        <div className="font-bold text-orange-600">Platform Fee</div>
+                        <div className="text-sm text-gray-600">Transaction Fee • 2.5%</div>
+                        <div className="text-xs text-gray-500">Transaction ID: TX-2024-004</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-bold text-red-600">-$6.25</div>
+                      <div className="text-sm text-gray-600">Sep 15, 2024</div>
+                      <div className="text-xs bg-green-100 text-green-800 px-2 py-1 border border-green-500">
+                        ✅ Completed
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Transaction Item 5 */}
+                <div className="border border-black p-4 hover:bg-gray-50">
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center space-x-3">
+                      <div className="text-2xl">📈</div>
+                      <div>
+                        <div className="font-bold text-green-600">Investment in GreenFarm Organics</div>
+                        <div className="text-sm text-gray-600">NFT Purchase • 2 NFTs</div>
+                        <div className="text-xs text-gray-500">Transaction ID: TX-2024-005</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-bold text-red-600">-$100.00</div>
+                      <div className="text-sm text-gray-600">Sep 10, 2024</div>
+                      <div className="text-xs bg-green-100 text-green-800 px-2 py-1 border border-green-500">
+                        ✅ Completed
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Transaction Item 6 */}
+                <div className="border border-black p-4 hover:bg-gray-50">
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center space-x-3">
+                      <div className="text-2xl">💸</div>
+                      <div>
+                        <div className="font-bold text-blue-600">Profit Sharing - EcoFarm Solutions</div>
+                        <div className="text-sm text-gray-600">Monthly Returns • 5 NFTs</div>
+                        <div className="text-xs text-gray-500">Transaction ID: TX-2024-006</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="font-bold text-green-600">+$33.50</div>
+                      <div className="text-sm text-gray-600">Sep 8, 2024</div>
+                      <div className="text-xs bg-green-100 text-green-800 px-2 py-1 border border-green-500">
+                        ✅ Completed
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Load More Button */}
+              <div className="text-center mt-6">
+                <button className="border-2 border-black px-6 py-2 text-sm font-bold hover:bg-gray-100">
+                  📄 Load More Transactions
+                </button>
+              </div>
+            </div>
+
+            {/* Transaction Summary */}
+            <div className="border-2 border-black p-6 bg-gray-50">
+              <h4 className="text-lg font-bold mb-4 bg-gray-600 text-white p-2">
+                📊 TRANSACTION SUMMARY
+              </h4>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h5 className="font-bold mb-3 text-green-800">INFLOWS</h5>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span>Profit Sharing:</span>
+                      <span className="font-bold text-green-600">+$78.50</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Wallet Top-ups:</span>
+                      <span className="font-bold text-green-600">+$500.00</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Refunds:</span>
+                      <span className="font-bold text-green-600">+$0.00</span>
+                    </div>
+                    <div className="border-t border-gray-400 pt-2">
+                      <div className="flex justify-between font-bold">
+                        <span>Total Inflows:</span>
+                        <span className="text-green-600">+$578.50</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h5 className="font-bold mb-3 text-red-800">OUTFLOWS</h5>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span>Investments:</span>
+                      <span className="font-bold text-red-600">-$350.00</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Platform Fees:</span>
+                      <span className="font-bold text-red-600">-$6.25</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Withdrawals:</span>
+                      <span className="font-bold text-red-600">-$0.00</span>
+                    </div>
+                    <div className="border-t border-gray-400 pt-2">
+                      <div className="flex justify-between font-bold">
+                        <span>Total Outflows:</span>
+                        <span className="text-red-600">-$356.25</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 p-4 border-2 border-black bg-white">
+                <div className="flex justify-between items-center">
+                  <span className="text-lg font-bold">NET BALANCE CHANGE:</span>
+                  <span className="text-2xl font-bold text-green-600">+$222.25</span>
+                </div>
+                <div className="text-sm text-gray-600 mt-1">
+                  Positive balance indicates net profit from investments
+                </div>
+              </div>
+            </div>
+
+            {/* Export Options */}
+            <div className="border-2 border-black p-4">
+              <div className="flex flex-wrap gap-4 items-center justify-between">
+                <div className="text-sm">
+                  <span className="font-bold">Export Options:</span>
+                  <span className="text-gray-600 ml-2">Download transaction history for tax purposes</span>
+                </div>
+                <div className="flex gap-2">
+                  <button className="border border-black px-4 py-2 text-sm hover:bg-gray-100">
+                    📊 Export to CSV
+                  </button>
+                  <button className="border border-black px-4 py-2 text-sm hover:bg-gray-100">
+                    📄 Export to PDF
+                  </button>
+                  <button className="border border-black px-4 py-2 text-sm hover:bg-gray-100">
+                    🧾 Tax Report
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         )}
@@ -951,14 +1481,14 @@ const PlantifyInvestorDashboard = () => {
           <div className="bg-white border-4 border-black p-6 max-w-2xl mx-4 max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-xl font-bold">💰 INVESTMENT DETAILS</h3>
-              <button 
+              <button
                 onClick={() => setShowInvestmentModal(false)}
                 className="text-2xl hover:text-gray-600"
               >
                 ✕
               </button>
             </div>
-            
+
             <div className="space-y-6">
               {/* Startup Info */}
               <div className="border-2 border-black p-4 bg-gray-50">
@@ -972,7 +1502,7 @@ const PlantifyInvestorDashboard = () => {
                   <div>Min Investment: ${selectedStartup.minInvestment}</div>
                 </div>
               </div>
-              
+
               {/* Investment Amount */}
               <div>
                 <label className="block text-sm font-bold mb-2">Investment Amount (ckUSDC)</label>
@@ -985,7 +1515,7 @@ const PlantifyInvestorDashboard = () => {
                   placeholder="Enter amount"
                 />
               </div>
-              
+
               {/* NFT Quantity */}
               <div>
                 <label className="block text-sm font-bold mb-2">Number of NFTs</label>
@@ -1002,7 +1532,7 @@ const PlantifyInvestorDashboard = () => {
                   Max: {Math.floor(investmentAmount / (selectedStartup.nftPrice || selectedStartup.minInvestment || 1))} NFTs
                 </div>
               </div>
-              
+
               {/* Projected Returns */}
               <div className="border-2 border-black p-4 bg-green-50">
                 <h4 className="font-bold mb-3 text-green-800">PROJECTED RETURNS</h4>
@@ -1027,7 +1557,7 @@ const PlantifyInvestorDashboard = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Risk Warning */}
               <div className="border-2 border-yellow-500 p-3 bg-yellow-50">
                 <div className="text-sm font-bold text-yellow-800 mb-2">⚠️ INVESTMENT RISK WARNING</div>
@@ -1039,23 +1569,22 @@ const PlantifyInvestorDashboard = () => {
                 </div>
               </div>
             </div>
-            
+
             {/* Action Buttons */}
             <div className="flex gap-3 mt-8 pt-6 border-t-2 border-black">
-              <button 
+              <button
                 onClick={() => setShowInvestmentModal(false)}
                 className="flex-1 border-2 border-black py-2 font-bold hover:bg-gray-100"
               >
                 CANCEL
               </button>
-              <button 
+              <button
                 onClick={confirmInvestment}
                 disabled={investmentAmount < (selectedStartup.minInvestment || 1)}
-                className={`flex-1 py-2 font-bold ${
-                  investmentAmount >= (selectedStartup.minInvestment || 1)
-                    ? 'bg-black text-white hover:bg-gray-800'
-                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                }`}
+                className={`flex-1 py-2 font-bold ${investmentAmount >= (selectedStartup.minInvestment || 1)
+                  ? 'bg-black text-white hover:bg-gray-800'
+                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                  }`}
               >
                 CONFIRM INVESTMENT
               </button>

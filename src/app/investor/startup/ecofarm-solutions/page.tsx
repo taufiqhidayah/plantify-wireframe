@@ -1,220 +1,211 @@
 "use client";
 
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 
 const EcoFarmSolutionsDetail = () => {
-  const router = useRouter();
   const [activeTab, setActiveTab] = useState("overview");
-  const [showInvestmentModal, setShowInvestmentModal] = useState(false);
-  const [investmentAmount, setInvestmentAmount] = useState(75);
-  const [nftQuantity, setNftQuantity] = useState(1);
+  const [nftCount, setNftCount] = useState(1);
 
-  // Startup detailed data
   const startupData = {
-    id: 6,
     name: "EcoFarm Solutions",
+    tagline: "Sustainable Agriculture Through Smart Technology",
     sector: "Agriculture",
-    location: "Bandung, West Java",
-    founded: "2023",
-    founder: "Budi Santoso",
-    teamSize: 12,
-    stage: "Growth Stage",
-    description: "Revolutionary organic farming solutions using sustainable technology to maximize crop yields while maintaining environmental responsibility.",
+    location: "Yogyakarta, Central Java",
+    website: "ecofarm-solutions.id",
+    employees: 12,
+    riskLevel: "Low",
     
-    // Financial Data
-    financials: {
+    investment: {
       nftPrice: 75,
       monthlyReturn: 12,
-      minInvestment: 75,
-      totalFunding: 50000,
-      raisedAmount: 37500,
-      fundingProgress: 75,
-      targetAmount: 50000,
-      monthlyRevenue: 8500,
-      monthlyExpenses: 5200,
-      netProfit: 3300,
-      profitMargin: 38.8,
-      burnRate: 0,
-      runway: "18 months"
+      expectedRoi: 16.0,
+      availableNfts: 100,
+      fundingProgress: 80,
+      fundingRaised: 30000,
+      fundingTarget: 37500,
+      lockPeriod: 36
     },
 
-    // Business Metrics
     metrics: {
-      customers: 45,
-      partnerships: 8,
-      locations: 3,
-      products: 12,
-      patents: 2,
-      certifications: 5
+      monthlyRevenue: 14500,
+      revenueGrowth: 18.5,
+      netProfitMargin: 32.1,
+      customerCount: 186,
+      customerGrowth: 22,
+      avgOrderValue: 78
     },
 
-    // Team
-    team: [
+    description: {
+      overview: "EcoFarm Solutions mengembangkan sistem pertanian hidroponik terintegrasi dengan teknologi IoT untuk membantu petani meningkatkan hasil panen sambil menjaga kelestarian lingkungan.",
+      businessModel: "B2B2C hybrid model - menjual sistem hidroponik ke petani dan hasil panen organik ke konsumen.",
+      competitiveAdvantage: [
+        "Teknologi IoT proprietary untuk monitoring tanaman",
+        "Sistem nutrisi organik yang telah dipatenkan", 
+        "Kemitraan strategis dengan 50+ petani lokal",
+        "Tim R&D dengan 15+ tahun pengalaman"
+      ]
+    },
+
+    founder: {
+      name: "Dr. Sari Wijayanti",
+      title: "CEO & Founder",
+      background: "PhD in Agricultural Engineering dari UGM. 12 tahun pengalaman di agritech dan sustainable farming.",
+      previousCompanies: [
+        "Senior Research Scientist - BPPT (2018-2022)",
+        "Agricultural Consultant - World Bank (2016-2018)",
+        "R&D Manager - PT Agro Innovation (2012-2016)"
+      ],
+      achievements: [
+        "Published 25+ research papers",
+        "Indonesia Innovation Award 2021", 
+        "TED Speaker on Smart Farming"
+      ]
+    },
+
+    financials: {
+      revenueHistory: [
+        { month: "Mar 2024", revenue: 8200, expenses: 5800, profit: 2400 },
+        { month: "Apr 2024", revenue: 9800, expenses: 6200, profit: 3600 },
+        { month: "May 2024", revenue: 11200, expenses: 6800, profit: 4400 },
+        { month: "Jun 2024", revenue: 12100, expenses: 7100, profit: 5000 },
+        { month: "Jul 2024", revenue: 13400, expenses: 7400, profit: 6000 },
+        { month: "Aug 2024", revenue: 14500, expenses: 7800, profit: 6700 }
+      ]
+    },
+
+    products: [
       {
-        name: "Budi Santoso",
-        role: "CEO & Founder",
-        experience: "15+ years in agriculture",
-        education: "MSc Agricultural Engineering, IPB",
-        photo: "👨‍🌾"
+        name: "EcoGrow System",
+        description: "Complete hydroponic setup with IoT monitoring",
+        price: "Rp 25,000,000",
+        customers: 45
       },
       {
-        name: "Siti Rahayu",
-        role: "CTO",
-        experience: "12+ years in agri-tech",
-        education: "PhD Computer Science, ITB",
-        photo: "👩‍💻"
-      },
-      {
-        name: "Ahmad Wijaya",
-        role: "Head of Operations",
-        experience: "10+ years in farm management",
-        education: "BSc Agriculture, UGM",
-        photo: "👨‍🔬"
+        name: "Smart Nutrient Mix", 
+        description: "Organic nutrient solution subscription",
+        price: "Rp 500,000/month",
+        customers: 78
       }
     ],
 
-    // Products & Services
-    products: [
-      "Smart Irrigation System",
-      "Organic Fertilizer Production",
-      "Crop Monitoring Drones",
-      "Sustainable Packaging Solutions",
-      "Farm-to-Table Distribution"
+    documents: [
+      {
+        type: "Business Plan",
+        name: "EcoFarm Solutions - Business Plan 2024-2027",
+        size: "2.4 MB",
+        pages: 45,
+        lastUpdated: "August 2024"
+      },
+      {
+        type: "Financial Statements",
+        name: "Audited Financial Report Q2 2024", 
+        size: "1.8 MB",
+        pages: 24,
+        lastUpdated: "July 2024"
+      }
     ],
 
-    // Market Analysis
-    market: {
-      size: "2.5B USD",
-      growth: "12.5% annually",
-      competition: "Moderate",
-      barriers: "High",
-      opportunities: "Export markets, technology licensing"
-    },
-
-    // Risk Assessment
-    risks: [
-      "Weather dependency",
-      "Regulatory changes in organic standards",
-      "Supply chain disruptions",
-      "Technology adoption challenges"
-    ],
-
-    // Growth Plans
-    growthPlans: [
-      "Expand to 10 locations by 2025",
-      "Launch mobile app for farmers",
-      "Enter export markets (Singapore, Malaysia)",
-      "Develop AI-powered crop recommendations",
-      "Partnership with major retailers"
-    ],
-
-    // Investment Terms
-    investmentTerms: {
-      minInvestment: 75,
-      maxInvestment: 5000,
-      lockPeriod: "12 months",
-      exitStrategy: "IPO or acquisition in 5-7 years",
-      votingRights: "Yes",
-      profitSharing: "Monthly",
-      governance: "Board observer rights"
+    risks: {
+      level: "Low",
+      factors: [
+        {
+          risk: "Weather Dependency",
+          impact: "Medium",
+          mitigation: "Controlled greenhouse environment and weather monitoring systems"
+        },
+        {
+          risk: "Market Competition",
+          impact: "Low", 
+          mitigation: "Strong IP protection and established customer relationships"
+        }
+      ]
     }
   };
 
-  const calculateReturns = (amount: number, quantity: number) => {
-    const monthlyReturn = startupData.financials.monthlyReturn * quantity;
-    const annualReturn = (monthlyReturn * 12 / amount) * 100;
-    return {
-      monthlyReturn,
-      annualReturn,
-      totalReturn: monthlyReturn * 12
-    };
+  const calculateImpact = () => {
+    const totalCost = nftCount * startupData.investment.nftPrice;
+    const monthlyReturn = nftCount * startupData.investment.monthlyReturn;
+    const annualReturn = monthlyReturn * 12;
+    const roi = (annualReturn / totalCost) * 100;
+    return { totalCost, monthlyReturn, annualReturn, roi };
   };
 
-  const handleInvestNow = () => {
-    setShowInvestmentModal(true);
-  };
-
-  const confirmInvestment = () => {
-    alert(`Investment of $${investmentAmount} in ${startupData.name} confirmed!`);
-    setShowInvestmentModal(false);
-  };
+  const impact = calculateImpact();
 
   const renderOverviewTab = () => (
     <div className="space-y-6">
-      {/* Company Description */}
       <div className="border-2 border-black p-6">
         <h3 className="text-xl font-bold mb-4 bg-green-600 text-white p-2">
           COMPANY OVERVIEW
         </h3>
-        <div className="text-sm leading-relaxed">
-          <p className="mb-4">{startupData.description}</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-            <div className="text-center p-3 border border-black">
-              <div className="text-lg font-bold text-green-600">{startupData.founded}</div>
-              <div className="text-xs">Founded</div>
-            </div>
-            <div className="text-center p-3 border border-black">
-              <div className="text-lg font-bold">{startupData.teamSize}</div>
-              <div className="text-xs">Team Members</div>
-            </div>
-            <div className="text-center p-3 border border-black">
-              <div className="text-lg font-bold text-blue-600">{startupData.stage}</div>
-              <div className="text-xs">Stage</div>
-            </div>
+        <div className="space-y-4">
+          <p className="text-sm leading-relaxed">{startupData.description.overview}</p>
+          
+          <div className="mt-6">
+            <h4 className="font-bold mb-2">BUSINESS MODEL</h4>
+            <p className="text-sm leading-relaxed">{startupData.description.businessModel}</p>
           </div>
-        </div>
-      </div>
 
-      {/* Key Products */}
-      <div className="border-2 border-black p-6">
-        <h3 className="text-xl font-bold mb-4 bg-blue-600 text-white p-2">
-          PRODUCTS & SERVICES
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {startupData.products.map((product, index) => (
-            <div key={index} className="border border-black p-3 flex items-center">
-              <span className="text-lg mr-3">✅</span>
-              <span className="text-sm">{product}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Market Analysis */}
-      <div className="border-2 border-black p-6">
-        <h3 className="text-xl font-bold mb-4 bg-purple-600 text-white p-2">
-          MARKET ANALYSIS
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h4 className="font-bold mb-3">Market Size & Growth</h4>
-            <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span>Market Size:</span>
-                <span className="font-bold">{startupData.market.size}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Annual Growth:</span>
-                <span className="font-bold text-green-600">{startupData.market.growth}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Competition Level:</span>
-                <span className="font-bold">{startupData.market.competition}</span>
-              </div>
-            </div>
-          </div>
-          <div>
-            <h4 className="font-bold mb-3">Opportunities</h4>
-            <div className="text-sm space-y-1">
-              {startupData.market.opportunities.split(', ').map((opp, index) => (
-                <div key={index} className="flex items-center">
-                  <span className="text-green-600 mr-2">🎯</span>
-                  <span>{opp}</span>
+          <div className="mt-6">
+            <h4 className="font-bold mb-3">COMPETITIVE ADVANTAGES</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              {startupData.description.competitiveAdvantage.map((advantage, index) => (
+                <div key={index} className="border border-black p-2 text-sm">
+                  ✓ {advantage}
                 </div>
               ))}
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="border-2 border-black p-6">
+        <h3 className="text-xl font-bold mb-4 bg-blue-600 text-white p-2">
+          KEY BUSINESS METRICS
+        </h3>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="border border-black p-3 text-center">
+            <div className="text-lg font-bold text-green-600">
+              ${startupData.metrics.monthlyRevenue.toLocaleString()}
+            </div>
+            <div className="text-xs">Monthly Revenue</div>
+            <div className="text-xs text-green-600">+{startupData.metrics.revenueGrowth}%</div>
+          </div>
+          <div className="border border-black p-3 text-center">
+            <div className="text-lg font-bold">
+              {startupData.metrics.netProfitMargin}%
+            </div>
+            <div className="text-xs">Net Profit Margin</div>
+          </div>
+          <div className="border border-black p-3 text-center">
+            <div className="text-lg font-bold text-blue-600">
+              {startupData.metrics.customerCount}
+            </div>
+            <div className="text-xs">Total Customers</div>
+            <div className="text-xs text-blue-600">+{startupData.metrics.customerGrowth}%</div>
+          </div>
+          <div className="border border-black p-3 text-center">
+            <div className="text-lg font-bold">
+              ${startupData.metrics.avgOrderValue}
+            </div>
+            <div className="text-xs">Avg Order Value</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="border-2 border-black p-6">
+        <h3 className="text-xl font-bold mb-4 bg-purple-600 text-white p-2">
+          PRODUCTS & SERVICES
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {startupData.products.map((product, index) => (
+            <div key={index} className="border border-black p-4">
+              <h4 className="font-bold mb-2">{product.name}</h4>
+              <p className="text-sm mb-2">{product.description}</p>
+              <div className="text-sm font-bold mb-1">Price: {product.price}</div>
+              <div className="text-xs text-gray-600">Customers: {product.customers}</div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -222,241 +213,219 @@ const EcoFarmSolutionsDetail = () => {
 
   const renderFinancialsTab = () => (
     <div className="space-y-6">
-      {/* Investment Details */}
-      <div className="border-2 border-black p-6">
-        <h3 className="text-xl font-bold mb-4 bg-black text-white p-2">
-          INVESTMENT DETAILS
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div className="border border-black p-4 text-center">
-            <div className="text-sm font-bold mb-1">NFT PRICE</div>
-            <div className="text-2xl font-bold text-green-600">
-              ${startupData.financials.nftPrice}
-            </div>
-            <div className="text-xs">ckUSDC</div>
-          </div>
-          <div className="border border-black p-4 text-center">
-            <div className="text-sm font-bold mb-1">MONTHLY RETURN</div>
-            <div className="text-2xl font-bold text-blue-600">
-              ${startupData.financials.monthlyReturn}
-            </div>
-            <div className="text-xs">Per NFT</div>
-          </div>
-          <div className="border border-black p-4 text-center">
-            <div className="text-sm font-bold mb-1">ANNUAL ROI</div>
-            <div className="text-2xl font-bold text-purple-600">
-              {((startupData.financials.monthlyReturn * 12 / startupData.financials.nftPrice) * 100).toFixed(1)}%
-            </div>
-            <div className="text-xs">Projected</div>
-          </div>
-        </div>
-
-        {/* Funding Progress */}
-        <div className="mb-4">
-          <div className="flex justify-between text-sm mb-2">
-            <span>Funding Progress</span>
-            <span>{startupData.financials.fundingProgress}%</span>
-          </div>
-          <div className="border border-black h-4">
-            <div 
-              className="bg-green-500 h-full" 
-              style={{ width: `${startupData.financials.fundingProgress}%` }}
-            ></div>
-          </div>
-          <div className="text-sm mt-2">
-            ${startupData.financials.raisedAmount.toLocaleString()} / ${startupData.financials.targetAmount.toLocaleString()}
-          </div>
-        </div>
-      </div>
-
-      {/* Financial Performance */}
       <div className="border-2 border-black p-6">
         <h3 className="text-xl font-bold mb-4 bg-green-600 text-white p-2">
-          FINANCIAL PERFORMANCE
+          FINANCIAL PERFORMANCE (Last 6 Months)
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="border border-black p-4">
-            <div className="text-sm font-bold mb-2">REVENUE</div>
-            <div className="text-2xl font-bold mb-1">
-              ${startupData.financials.monthlyRevenue.toLocaleString()}
-            </div>
-            <div className="text-xs text-gray-600">Monthly</div>
-          </div>
-          <div className="border border-black p-4">
-            <div className="text-sm font-bold mb-2">EXPENSES</div>
-            <div className="text-2xl font-bold mb-1">
-              ${startupData.financials.monthlyExpenses.toLocaleString()}
-            </div>
-            <div className="text-xs text-gray-600">Monthly</div>
-          </div>
-          <div className="border border-black p-4">
-            <div className="text-sm font-bold mb-2">NET PROFIT</div>
-            <div className="text-2xl font-bold text-green-600 mb-1">
-              ${startupData.financials.netProfit.toLocaleString()}
-            </div>
-            <div className="text-xs text-gray-600">
-              {startupData.financials.profitMargin}% margin
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Investment Terms */}
-      <div className="border-2 border-black p-6">
-        <h3 className="text-xl font-bold mb-4 bg-blue-600 text-white p-2">
-          INVESTMENT TERMS
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="space-y-3">
-            <div className="flex justify-between">
-              <span className="text-sm">Minimum Investment:</span>
-              <span className="font-bold">${startupData.investmentTerms.minInvestment}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-sm">Lock Period:</span>
-              <span className="font-bold">{startupData.investmentTerms.lockPeriod}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-sm">Exit Strategy:</span>
-              <span className="font-bold text-sm">{startupData.investmentTerms.exitStrategy}</span>
-            </div>
-          </div>
-          <div className="space-y-3">
-            <div className="flex justify-between">
-              <span className="text-sm">Voting Rights:</span>
-              <span className="font-bold text-green-600">{startupData.investmentTerms.votingRights}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-sm">Profit Sharing:</span>
-              <span className="font-bold">{startupData.investmentTerms.profitSharing}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-sm">Governance:</span>
-              <span className="font-bold text-sm">{startupData.investmentTerms.governance}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderTeamTab = () => (
-    <div className="space-y-6">
-      <div className="border-2 border-black p-6">
-        <h3 className="text-xl font-bold mb-4 bg-purple-600 text-white p-2">
-          LEADERSHIP TEAM
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {startupData.team.map((member, index) => (
-            <div key={index} className="border-2 border-black p-4 text-center">
-              <div className="text-4xl mb-3">{member.photo}</div>
-              <h4 className="font-bold mb-2">{member.name}</h4>
-              <div className="text-sm font-bold text-blue-600 mb-2">{member.role}</div>
-              <div className="text-xs space-y-1">
-                <div>{member.experience}</div>
-                <div className="text-gray-600">{member.education}</div>
+        <div className="space-y-4">
+          {startupData.financials.revenueHistory.map((month, index) => (
+            <div key={index} className="border border-black p-4">
+              <div className="flex justify-between items-center mb-2">
+                <h4 className="font-bold">{month.month}</h4>
+                <div className="text-sm text-green-600">
+                  Profit: ${month.profit.toLocaleString()}
+                </div>
+              </div>
+              <div className="grid grid-cols-3 gap-4 text-sm">
+                <div>
+                  <span className="font-bold">Revenue:</span> ${month.revenue.toLocaleString()}
+                </div>
+                <div>
+                  <span className="font-bold">Expenses:</span> ${month.expenses.toLocaleString()}
+                </div>
+                <div>
+                  <span className="font-bold">Profit Margin:</span> {((month.profit / month.revenue) * 100).toFixed(1)}%
+                </div>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="border-2 border-black p-6">
-        <h3 className="text-xl font-bold mb-4 bg-green-600 text-white p-2">
-          BUSINESS METRICS
+      <div className="border-2 border-black p-6 bg-green-50">
+        <h3 className="text-xl font-bold mb-4 bg-black text-white p-2">
+          INVESTOR PROFIT SHARING MODEL
         </h3>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          <div className="text-center p-3 border border-black">
-            <div className="text-xl font-bold text-green-600">{startupData.metrics.customers}</div>
-            <div className="text-xs">Active Customers</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <h4 className="font-bold mb-3">How Profit Sharing Works</h4>
+            <div className="space-y-2 text-sm">
+              <div>• 70% of monthly net profit distributed to NFT holders</div>
+              <div>• 30% retained by company for growth and operations</div>
+              <div>• Payments distributed on 1st of each month</div>
+              <div>• Profit sharing locked for {startupData.investment.lockPeriod} months</div>
+              <div>• Transparent reporting with monthly financial statements</div>
+            </div>
           </div>
-          <div className="text-center p-3 border border-black">
-            <div className="text-xl font-bold text-blue-600">{startupData.metrics.partnerships}</div>
-            <div className="text-xs">Partnerships</div>
-          </div>
-          <div className="text-center p-3 border border-black">
-            <div className="text-xl font-bold text-purple-600">{startupData.metrics.locations}</div>
-            <div className="text-xs">Locations</div>
-          </div>
-          <div className="text-center p-3 border border-black">
-            <div className="text-xl font-bold">{startupData.metrics.products}</div>
-            <div className="text-xs">Products</div>
-          </div>
-          <div className="text-center p-3 border border-black">
-            <div className="text-xl font-bold text-orange-600">{startupData.metrics.patents}</div>
-            <div className="text-xs">Patents</div>
-          </div>
-          <div className="text-center p-3 border border-black">
-            <div className="text-xl font-bold text-green-600">{startupData.metrics.certifications}</div>
-            <div className="text-xs">Certifications</div>
+          <div>
+            <h4 className="font-bold mb-3">Expected Monthly Distribution</h4>
+            <div className="border border-black p-4">
+              <div className="text-sm mb-2">Based on current performance:</div>
+              <div className="text-lg font-bold text-green-600 mb-2">
+                ${startupData.investment.monthlyReturn} per NFT
+              </div>
+              <div className="text-xs text-gray-600">
+                From latest month net profit of $6,700
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 
-  const renderGrowthTab = () => (
+  const renderFounderTab = () => (
     <div className="space-y-6">
       <div className="border-2 border-black p-6">
-        <h3 className="text-xl font-bold mb-4 bg-blue-600 text-white p-2">
-          GROWTH STRATEGY
+        <h3 className="text-xl font-bold mb-4 bg-purple-600 text-white p-2">
+          FOUNDER PROFILE
         </h3>
-        <div className="space-y-4">
-          {startupData.growthPlans.map((plan, index) => (
-            <div key={index} className="border border-black p-3 flex items-start">
-              <span className="text-lg mr-3 text-blue-600">🎯</span>
-              <span className="text-sm">{plan}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="border-2 border-black p-6">
-        <h3 className="text-xl font-bold mb-4 bg-yellow-600 text-white p-2">
-          RISK ASSESSMENT
-        </h3>
-        <div className="space-y-3">
-          {startupData.risks.map((risk, index) => (
-            <div key={index} className="flex items-start">
-              <span className="text-lg mr-3 text-yellow-600">⚠️</span>
-              <span className="text-sm">{risk}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="border-2 border-black p-6 bg-green-50">
-        <h3 className="text-xl font-bold mb-4 bg-green-600 text-white p-2">
-          COMPETITIVE ADVANTAGES
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-          <div className="space-y-2">
-            <div className="flex items-center">
-              <span className="text-green-600 mr-2">✅</span>
-              <span>Proprietary organic farming technology</span>
-            </div>
-            <div className="flex items-center">
-              <span className="text-green-600 mr-2">✅</span>
-              <span>Strong local partnerships</span>
-            </div>
-            <div className="flex items-center">
-              <span className="text-green-600 mr-2">✅</span>
-              <span>Certified organic products</span>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="md:col-span-1">
+            <div className="border border-black p-4 text-center">
+              <div className="w-32 h-32 border-2 border-black bg-gray-100 flex items-center justify-center mx-auto mb-4">
+                [FOUNDER PHOTO]
+              </div>
+              <h4 className="font-bold text-lg">{startupData.founder.name}</h4>
+              <div className="text-sm text-gray-600">{startupData.founder.title}</div>
             </div>
           </div>
-          <div className="space-y-2">
-            <div className="flex items-center">
-              <span className="text-green-600 mr-2">✅</span>
-              <span>Sustainable business model</span>
+          
+          <div className="md:col-span-2">
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-bold mb-2">BACKGROUND & EDUCATION</h4>
+                <p className="text-sm leading-relaxed">{startupData.founder.background}</p>
+              </div>
+              
+              <div>
+                <h4 className="font-bold mb-2">PREVIOUS EXPERIENCE</h4>
+                <div className="space-y-2">
+                  {startupData.founder.previousCompanies.map((company, index) => (
+                    <div key={index} className="border border-black p-2 text-sm">
+                      {company}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="flex items-center">
-              <span className="text-green-600 mr-2">✅</span>
-              <span>Experienced team</span>
+          </div>
+        </div>
+
+        <div className="mt-6">
+          <h4 className="font-bold mb-3">KEY ACHIEVEMENTS</h4>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            {startupData.founder.achievements.map((achievement, index) => (
+              <div key={index} className="border border-black p-3 text-sm text-center">
+                🏆 {achievement}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderDocumentsTab = () => (
+    <div className="space-y-6">
+      <div className="border-2 border-black p-6">
+        <h3 className="text-xl font-bold mb-4 bg-red-600 text-white p-2">
+          📄 OFFICIAL DOCUMENTS
+        </h3>
+        <div className="text-sm mb-6 bg-yellow-50 border border-yellow-500 p-3">
+          <strong>⚠️ Important:</strong> All documents are verified and audited. Access is provided for due diligence purposes.
+        </div>
+        
+        <div className="space-y-4">
+          {startupData.documents.map((doc, index) => (
+            <div key={index} className="border-2 border-black p-4">
+              <div className="flex justify-between items-start mb-3">
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-xs border border-black px-2 py-1 bg-gray-100">
+                      {doc.type}
+                    </span>
+                    <span className="text-xs text-gray-600">
+                      Updated: {doc.lastUpdated}
+                    </span>
+                  </div>
+                  <h4 className="font-bold text-lg">{doc.name}</h4>
+                </div>
+                <div className="text-right text-sm">
+                  <div className="font-bold">{doc.size}</div>
+                  <div className="text-xs text-gray-600">{doc.pages} pages</div>
+                </div>
+              </div>
+              
+              <div className="flex gap-2 mt-4">
+                <button className="border border-black px-4 py-2 text-sm hover:bg-gray-100">
+                  📖 Preview
+                </button>
+                <button className="border border-black px-4 py-2 text-sm hover:bg-gray-100">
+                  📥 Download
+                </button>
+                <button className="border border-black px-4 py-2 text-sm hover:bg-gray-100">
+                  🔗 Request Access
+                </button>
+              </div>
             </div>
-            <div className="flex items-center">
-              <span className="text-green-600 mr-2">✅</span>
-              <span>Growing market demand</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderRisksTab = () => (
+    <div className="space-y-6">
+      <div className="border-2 border-black p-6">
+        <h3 className="text-xl font-bold mb-4 bg-yellow-600 text-white p-2">
+          ⚠️ RISK ASSESSMENT
+        </h3>
+        <div className="mb-4">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="text-lg font-bold">Overall Risk Level:</div>
+            <div className="bg-green-100 border border-green-500 text-green-800 px-3 py-1 font-bold">
+              {startupData.risks.level} RISK
             </div>
+          </div>
+        </div>
+
+        <div className="space-y-4">
+          {startupData.risks.factors.map((factor, index) => (
+            <div key={index} className="border-2 border-black p-4">
+              <div className="flex justify-between items-start mb-3">
+                <h4 className="font-bold text-lg">{factor.risk}</h4>
+                <div className={`text-xs px-2 py-1 border ${
+                  factor.impact === 'Low' ? 'bg-green-100 border-green-500 text-green-800' :
+                  factor.impact === 'Medium' ? 'bg-yellow-100 border-yellow-500 text-yellow-800' :
+                  'bg-red-100 border-red-500 text-red-800'
+                }`}>
+                  {factor.impact} Impact
+                </div>
+              </div>
+              <div>
+                <span className="font-bold text-sm">Mitigation Strategy:</span>
+                <p className="text-sm mt-1">{factor.mitigation}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="border-2 border-black p-6 bg-red-50">
+        <h3 className="text-xl font-bold mb-4 bg-red-600 text-white p-2">
+          💼 GENERAL INVESTMENT RISKS
+        </h3>
+        <div className="text-sm">
+          <div className="mb-3">
+            <strong>Investment Risks Include:</strong>
+          </div>
+          <div className="space-y-1">
+            <div>• 36-month lock period - no early exit</div>
+            <div>• Returns depend on business performance</div>
+            <div>• No guaranteed profit sharing</div>
+            <div>• Potential loss of principal investment</div>
+            <div>• Market volatility impact</div>
           </div>
         </div>
       </div>
@@ -469,53 +438,80 @@ const EcoFarmSolutionsDetail = () => {
       <header className="border-b-2 border-black p-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-4">
-            <button 
-              onClick={() => router.back()}
-              className="text-sm hover:underline border border-black px-3 py-1"
-            >
-              ← Back
-            </button>
             <div className="text-2xl font-bold border-2 border-black px-4 py-2">
               PLANTIFY
             </div>
+            <button className="text-sm hover:underline">
+              ← Back to Marketplace
+            </button>
           </div>
           <div className="flex items-center space-x-4">
-            <div className="text-sm">Startup Details</div>
-            <button 
-              onClick={handleInvestNow}
-              className="bg-black text-white px-6 py-2 text-sm hover:bg-gray-800"
-            >
-              💰 INVEST NOW
-            </button>
+            <div className="text-sm">Startup Detail</div>
+            <div className="text-sm border border-black px-3 py-1">
+              Balance: $1,250 ckUSDC
+            </div>
           </div>
         </div>
       </header>
 
       {/* Startup Header */}
-      <div className="border-b-2 border-black bg-green-50 p-6">
+      <div className="border-b border-black bg-green-50 p-6">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-            <div>
-              <h1 className="text-3xl font-bold mb-2">{startupData.name}</h1>
-              <div className="flex items-center space-x-4 mb-3">
-                <div className="text-sm border border-black px-2 py-1">
-                  {startupData.sector}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="md:col-span-2">
+              <div className="flex items-center gap-3 mb-2">
+                <h1 className="text-3xl font-bold">{startupData.name}</h1>
+                <div className="bg-green-100 border border-green-500 text-green-800 px-2 py-1 text-xs font-bold">
+                  {startupData.riskLevel} RISK
                 </div>
-                <div className="text-sm">📍 {startupData.location}</div>
-                <div className="text-sm">👥 {startupData.teamSize} team members</div>
               </div>
-              <p className="text-sm text-gray-600 max-w-2xl">
-                {startupData.description}
-              </p>
+              <div className="text-lg text-gray-700 mb-3">{startupData.tagline}</div>
+              <div className="flex flex-wrap gap-3 text-sm">
+                <span className="border border-black px-2 py-1">{startupData.sector}</span>
+                <span className="border border-gray-400 px-2 py-1 text-gray-600">📍 {startupData.location}</span>
+                <span className="border border-gray-400 px-2 py-1 text-gray-600">🌐 {startupData.website}</span>
+                <span className="border border-gray-400 px-2 py-1 text-gray-600">👥 {startupData.employees} employees</span>
+              </div>
             </div>
-            <div className="mt-4 md:mt-0 text-right">
-              <div className="text-2xl font-bold text-green-600 mb-1">
-                ${startupData.financials.nftPrice}
+            
+            {/* Investment Summary */}
+            <div className="border-2 border-black p-4 bg-white">
+              <h3 className="font-bold mb-3">INVESTMENT OPPORTUNITY</h3>
+              <div className="space-y-2 text-sm mb-4">
+                <div className="flex justify-between">
+                  <span>NFT Price:</span>
+                  <span className="font-bold">${startupData.investment.nftPrice}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Monthly Return:</span>
+                  <span className="font-bold text-green-600">${startupData.investment.monthlyReturn}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Expected ROI:</span>
+                  <span className="font-bold text-blue-600">{startupData.investment.expectedRoi}%</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Available NFTs:</span>
+                  <span className="font-bold">{startupData.investment.availableNfts}</span>
+                </div>
               </div>
-              <div className="text-sm">NFT Price</div>
-              <div className="text-sm text-blue-600 font-bold">
-                ${startupData.financials.monthlyReturn}/month return
+              
+              <div className="mb-4">
+                <div className="text-xs mb-1">Funding Progress: {startupData.investment.fundingProgress}%</div>
+                <div className="border border-black h-3">
+                  <div 
+                    className="bg-green-500 h-full" 
+                    style={{ width: `${startupData.investment.fundingProgress}%` }}
+                  ></div>
+                </div>
+                <div className="text-xs mt-1">
+                  ${startupData.investment.fundingRaised.toLocaleString()} / ${startupData.investment.fundingTarget.toLocaleString()}
+                </div>
               </div>
+
+              <button className="bg-black text-white w-full py-3 font-bold text-lg hover:bg-gray-800">
+                INVEST NOW
+              </button>
             </div>
           </div>
         </div>
@@ -525,10 +521,11 @@ const EcoFarmSolutionsDetail = () => {
       <div className="border-b border-black">
         <div className="max-w-7xl mx-auto flex">
           {[
-            { id: "overview", label: "OVERVIEW", icon: "📋" },
+            { id: "overview", label: "OVERVIEW", icon: "📊" },
             { id: "financials", label: "FINANCIALS", icon: "💰" },
-            { id: "team", label: "TEAM", icon: "👥" },
-            { id: "growth", label: "GROWTH", icon: "📈" },
+            { id: "founder", label: "FOUNDER & TEAM", icon: "👥" },
+            { id: "documents", label: "DOCUMENTS", icon: "📄" },
+            { id: "risks", label: "RISKS", icon: "⚠️" },
           ].map((tab) => (
             <button
               key={tab.id}
@@ -549,107 +546,63 @@ const EcoFarmSolutionsDetail = () => {
       <div className="max-w-7xl mx-auto p-6">
         {activeTab === "overview" && renderOverviewTab()}
         {activeTab === "financials" && renderFinancialsTab()}
-        {activeTab === "team" && renderTeamTab()}
-        {activeTab === "growth" && renderGrowthTab()}
+        {activeTab === "founder" && renderFounderTab()}
+        {activeTab === "documents" && renderDocumentsTab()}
+        {activeTab === "risks" && renderRisksTab()}
       </div>
 
-      {/* Investment Modal */}
-      {showInvestmentModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white border-4 border-black p-6 max-w-2xl mx-4 max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-xl font-bold">💰 INVEST IN ECOFARM SOLUTIONS</h3>
-              <button 
-                onClick={() => setShowInvestmentModal(false)}
-                className="text-2xl hover:text-gray-600"
-              >
-                ✕
-              </button>
-            </div>
-            
-            <div className="space-y-6">
-              {/* Investment Amount */}
+      {/* Sticky Investment Panel */}
+      <div className="border-t-2 border-black bg-white p-4 sticky bottom-0 shadow-lg">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center space-x-6">
               <div>
-                <label className="block text-sm font-bold mb-2">Investment Amount (ckUSDC)</label>
-                <input
-                  type="number"
-                  value={investmentAmount}
-                  onChange={(e) => setInvestmentAmount(Number(e.target.value))}
-                  min={startupData.financials.minInvestment}
-                  className="w-full border-2 border-black p-2 text-sm"
-                  placeholder="Enter amount"
-                />
+                <div className="text-sm text-gray-600">Investment Amount</div>
+                <div className="text-xl font-bold">${impact.totalCost}</div>
               </div>
-              
-              {/* NFT Quantity */}
               <div>
-                <label className="block text-sm font-bold mb-2">Number of NFTs</label>
-                <input
-                  type="number"
-                  value={nftQuantity}
-                  onChange={(e) => setNftQuantity(Number(e.target.value))}
-                  min={1}
-                  max={Math.floor(investmentAmount / startupData.financials.nftPrice)}
-                  className="w-full border-2 border-black p-2 text-sm"
-                  placeholder="Enter quantity"
-                />
-                <div className="text-xs text-gray-600 mt-1">
-                  Max: {Math.floor(investmentAmount / startupData.financials.nftPrice)} NFTs
-                </div>
+                <div className="text-sm text-gray-600">NFTs</div>
+                <div className="text-xl font-bold">{nftCount}</div>
               </div>
-              
-              {/* Projected Returns */}
-              <div className="border-2 border-black p-4 bg-green-50">
-                <h4 className="font-bold mb-3 text-green-800">PROJECTED RETURNS</h4>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                  <div className="text-center">
-                    <div className="text-lg font-bold text-green-600">
-                      ${calculateReturns(investmentAmount, nftQuantity).monthlyReturn}
-                    </div>
-                    <div className="text-xs">Monthly Return</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-lg font-bold text-blue-600">
-                      {calculateReturns(investmentAmount, nftQuantity).annualReturn.toFixed(1)}%
-                    </div>
-                    <div className="text-xs">Annual ROI</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-lg font-bold text-purple-600">
-                      ${calculateReturns(investmentAmount, nftQuantity).totalReturn}
-                    </div>
-                    <div className="text-xs">Annual Return</div>
-                  </div>
-                </div>
+              <div>
+                <div className="text-sm text-gray-600">Monthly Return</div>
+                <div className="text-xl font-bold text-green-600">${impact.monthlyReturn}</div>
+              </div>
+              <div>
+                <div className="text-sm text-gray-600">Expected ROI</div>
+                <div className="text-xl font-bold text-blue-600">{impact.roi.toFixed(1)}%</div>
               </div>
             </div>
             
-            {/* Action Buttons */}
-            <div className="flex gap-3 mt-8 pt-6 border-t-2 border-black">
-              <button 
-                onClick={() => setShowInvestmentModal(false)}
-                className="flex-1 border-2 border-black py-2 font-bold hover:bg-gray-100"
-              >
-                CANCEL
-              </button>
-              <button 
-                onClick={confirmInvestment}
-                disabled={investmentAmount < startupData.financials.minInvestment}
-                className={`flex-1 py-2 font-bold ${
-                  investmentAmount >= startupData.financials.minInvestment
-                    ? 'bg-black text-white hover:bg-gray-800'
-                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                }`}
-              >
-                CONFIRM INVESTMENT
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <button
+                  onClick={() => setNftCount(Math.max(1, nftCount - 1))}
+                  className="border border-black px-3 py-2 hover:bg-gray-100"
+                >
+                  -
+                </button>
+                <span className="px-4 py-2 border border-black bg-gray-50">
+                  {nftCount} NFTs
+                </span>
+                <button
+                  onClick={() => setNftCount(nftCount + 1)}
+                  className="border border-black px-3 py-2 hover:bg-gray-100"
+                >
+                  +
+                </button>
+              </div>
+              
+              <button className="bg-black text-white px-8 py-3 text-lg font-bold hover:bg-gray-800">
+                INVEST ${impact.totalCost}
               </button>
             </div>
           </div>
         </div>
-      )}
+      </div>
 
       {/* Footer */}
-      <footer className="border-t-2 border-black py-4 px-4 mt-12">
+      <footer className="border-t-2 border-black py-8 px-4">
         <div className="max-w-7xl mx-auto text-center text-sm text-gray-600">
           <div>© 2024 Plantify. Built on Internet Computer Protocol.</div>
         </div>
