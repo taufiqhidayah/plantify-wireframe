@@ -1,307 +1,457 @@
-Plantify - Panduan Lengkap untuk Founder
-1. Pengenalan: Apa itu Plantify untuk Founder?
-Plantify adalah platform yang memungkinkan startup untuk mendapatkan funding dari komunitas investor retail dengan cara yang transparan dan terstruktur. Sebagai founder, Anda akan:
-Mendapatkan funding tanpa perlu melalui bank atau VC tradisional
-Membangun community investor yang supportive terhadap bisnis Anda
-Mendapat exposure dan marketing melalui platform
-Memiliki komitmen jelas terhadap investor melalui profit sharing
-Namun perlu diingat: Ini bukan "dana gratis" - Anda berkomitmen memberikan profit sharing rutin kepada investor selama periode yang disepakati.
-2. Syarat dan Kriteria Founder
-Persyaratan Minimal:
-Legal Entity: Memiliki CV/PT/Koperasi yang legal
-Business Track Record: Minimal 6 bulan operasional atau proof of concept
-Revenue Potential: Bisnis harus punya potensi generate revenue recurring
-Commitment: Siap terikat komitmen profit sharing 3 tahun
-Asset Collateral: Memiliki asset senilai minimal 12 bulan profit sharing dalam ckUSDC
-Jenis Bisnis yang Cocok:
-✅ Pertanian & Perkebunan: Farm, greenhouse, organic farming ✅ Peternakan: Ayam, kambing, lele, dll dengan siklus profit reguler
- ✅ Food & Beverage: Warung, catering, produksi makanan ✅ Retail & Ecommerce: Toko, distributorship, online shop ✅ Services: Bengkel, salon, laundry, kursus, konsultan ✅ Tech & Digital: App, SaaS, digital services dengan recurring revenue
-Jenis Bisnis yang Tidak Cocok:
-❌ One-time Project: Konstruksi, event organizer ❌ Highly Regulated: Bank, insurance, securities
- ❌ Speculative: Trading, mining, gambling ❌ No Revenue Model: Pure R&D, charity, social project
-3. Proses Pendaftaran Lengkap
-Step 1: Persiapan Dokumen
-Dokumen Legal:
-Akta pendirian perusahaan (CV/PT/Koperasi)
-SIUP (Surat Izin Usaha Perdagangan)
-NPWP Perusahaan dan Personal
-KTP Founder/Co-founder
-Rekening bank perusahaan
-Dokumen Bisnis:
-Business plan lengkap
-Financial projection 3 tahun
-Market analysis dan competitive landscape
-Product/service portfolio
-Team profile dan experience
-Customer testimonials atau case studies
-Dokumen Finansial:
-Laporan keuangan 6-12 bulan terakhir
-Cash flow statement
-Bank statement 3 bulan terakhir
-Profit & loss statement
-Asset inventory dan valuation
-Step 2: Proposal Bisnis
-Template yang Harus Diisi:
-A. Executive Summary
-Problem yang dipecahkan
-Solution yang ditawarkan
-Target market dan size
-Competitive advantage
-Funding requirement dan penggunaan dalam ckUSDC
-Expected return untuk investor dalam ckUSDC
-B. Business Model Detail
-Revenue streams dan pricing
-Cost structure dan margin
-Sales & marketing strategy
-Operational process
-Growth plan dan scalability
-C. Financial Projections
-Revenue projection bulanan 36 bulan dalam ckUSDC
-Expected monthly profit dalam ckUSDC
-Profit sharing commitment (berapa % dari profit dalam ckUSDC)
-Break-even analysis
-Sensitivity analysis (best case, worst case, base case)
-D. Team & Execution
-Founder background dan expertise
-Key team members
-Advisory board (jika ada)
-Previous business experience
-Success stories atau achievements
-Step 3: Asset Collateral Assessment
-Perhitungan Collateral Requirement:
+# Plantify: Panduan Lengkap untuk Founder
+
+---
+
+## 1. Pengenalan: Apa itu Plantify untuk Founder?
+
+**Plantify** adalah platform yang memungkinkan startup untuk mendapatkan pendanaan (funding) dari komunitas investor retail dengan cara yang transparan dan terstruktur. Sebagai founder, Anda akan:
+
+- Mendapatkan pendanaan tanpa perlu melalui bank atau VC tradisional.
+- Membangun komunitas investor yang suportif terhadap bisnis Anda.
+- Mendapat eksposur dan pemasaran (marketing) melalui platform.
+- Memiliki komitmen jelas terhadap investor melalui **profit sharing**.
+
+Namun perlu diingat: Ini bukan "dana gratis"—Anda berkomitmen memberikan profit sharing rutin kepada investor selama periode yang disepakati.
+
+---
+
+## 2. Syarat dan Kriteria Founder
+
+### Persyaratan Minimal
+
+- **Legal Entity**: Memiliki CV/PT/Koperasi yang legal.
+- **Business Track Record**: Minimal 6 bulan operasional atau _proof of concept_.
+- **Revenue Potential**: Bisnis harus punya potensi untuk menghasilkan pendapatan berulang (recurring revenue).
+- **Komitmen**: Siap terikat komitmen profit sharing selama 3 tahun.
+- **Asset Collateral**: Memiliki aset senilai minimal 12 bulan profit sharing dalam ckUSDC.
+
+### Jenis Bisnis yang Cocok
+
+✅ Pertanian & Perkebunan: Farm, greenhouse, organic farming
+
+✅ Peternakan: Ayam, kambing, lele, dll. dengan siklus profit reguler
+
+✅ Food & Beverage: Warung, catering, produksi makanan
+
+✅ Retail & Ecommerce: Toko, distributorship, online shop
+
+✅ Services: Bengkel, salon, laundry, kursus, konsultan
+
+✅ Tech & Digital: Aplikasi, SaaS, layanan digital dengan pendapatan berulang
+
+### Jenis Bisnis yang Tidak Cocok
+
+❌ One-time Project: Konstruksi, event organizer
+
+❌ Highly Regulated: Bank, asuransi, sekuritas
+
+❌ Spekulatif: Trading, mining, perjudian
+
+❌ No Revenue Model: R&D murni, amal, proyek sosial
+
+---
+
+## 3. Proses Pendaftaran Lengkap
+
+### Langkah 1: Persiapan Dokumen
+
+**Dokumen Legal**
+
+- Akta pendirian perusahaan (CV/PT/Koperasi)
+- SIUP (Surat Izin Usaha Perdagangan)
+- NPWP Perusahaan dan Personal
+- KTP Founder/Co-founder
+- Rekening bank perusahaan
+
+**Dokumen Bisnis**
+
+- _Business plan_ lengkap
+- Proyeksi finansial 3 tahun
+- Analisis pasar dan lanskap kompetitif
+- Portofolio produk/layanan
+- Profil tim dan pengalaman
+- Testimoni pelanggan atau studi kasus
+
+**Dokumen Finansial**
+
+- Laporan keuangan 6-12 bulan terakhir
+- Laporan arus kas (_cash flow statement_)
+- Laporan rekening bank 3 bulan terakhir
+- Laporan laba rugi (_profit & loss statement_)
+- Inventarisasi aset dan valuasi
+
+### Langkah 2: Proposal Bisnis
+
+**Template yang Harus Diisi:**
+
+**A. Ringkasan Eksekutif (_Executive Summary_)**
+
+- Masalah yang dipecahkan
+- Solusi yang ditawarkan
+- Target pasar dan ukurannya
+- Keunggulan kompetitif
+- Kebutuhan pendanaan dan penggunaannya dalam ckUSDC
+- Proyeksi pengembalian untuk investor dalam ckUSDC
+
+**B. Detail Model Bisnis**
+
+- Aliran pendapatan dan penetapan harga
+- Struktur biaya dan margin
+- Strategi penjualan & pemasaran
+- Proses operasional
+- Rencana pertumbuhan dan skalabilitas
+
+**C. Proyeksi Finansial**
+
+- Proyeksi pendapatan bulanan 36 bulan dalam ckUSDC
+- Proyeksi laba bulanan dalam ckUSDC
+- Komitmen profit sharing (berapa % dari laba dalam ckUSDC)
+- Analisis _break-even point_
+- Analisis sensitivitas (_best case, worst case, base case_)
+
+**D. Tim & Eksekusi**
+
+- Latar belakang dan keahlian founder
+- Anggota tim kunci
+- Dewan penasihat (jika ada)
+- Pengalaman bisnis sebelumnya
+- Kisah sukses atau pencapaian
+
+### Langkah 3: Penilaian Jaminan Aset (_Asset Collateral Assessment_)
+
+**Perhitungan Kebutuhan Jaminan (_Collateral Requirement_)**
+
 Komitmen profit sharing bulanan dalam ckUSDC = A
-Minimum collateral = A × 12 bulan
+Minimum jaminan = A × 12 bulan
 
-Contoh:
-Jika komitmen profit sharing $300/bulan
-Maka minimum collateral = $300 × 12 = $3,600 ckUSDC
+**Contoh:**
+Jika komitmen profit sharing \$300/bulan, maka minimum jaminan = \$300 × 12 = \$3,600 ckUSDC
 
-Jenis Asset Collateral yang Diterima:
-Stable Currency (ckUSDC) System dengan Dual Payment Options
-Platform menggunakan sistem collateral yang fully on-chain dalam ckUSDC untuk stabilitas nilai, dengan dua opsi pembayaran:
-Option A: Pay dengan ICP
-Founder transfer ICP yang otomatis converted ke ckUSDC
-Real-time conversion rate display dengan countdown timer
-Transparent conversion process tanpa hidden fees
-Option B: Pay langsung dengan ckUSDC
-Founder yang sudah memiliki ckUSDC bisa deposit langsung
-No conversion fees atau slippage risk
-Immediate processing tanpa waiting untuk conversion
-Mengapa ckUSDC untuk Collateral?
-Stable Value: Tidak ada volatility risk seperti crypto lainnya
-Predictable Requirements: Founder tahu exact amount yang dibutuhkan
-Fair for All: Investor dan founder punya certainty dalam planning
-Transparent Valuation: Nilai real-time dan stable
-Collateral Requirements:
-Minimum collateral: 12 bulan profit sharing dalam ckUSDC
-Additional buffer: 10% extra untuk handling fee dan operasional
-Lock period: 36 bulan penuh
-Contoh Perhitungan:
-Komitmen profit sharing: $500 per bulan
-12 bulan requirement: $6,000 ckUSDC
-With 10% buffer: $6,000 + $600 = $6,600 ckUSDC total
+**Jenis Aset Jaminan yang Diterima: Sistem ckUSDC**
 
-Step 4: Platform Review
-Review Process:
-Document Verification: Tim platform cek kelengkapan dan validitas dokumen
-Business Assessment: Evaluasi kelayakan bisnis dan realistis tidaknya proyeksi
-Risk Scoring: Platform assign risk score berdasarkan kriteria internal
-Collateral Verification: Confirm asset collateral memenuhi requirement
-Final Interview: Video call dengan founder untuk clarification
-Kriteria Penilaian:
-Business Viability (40%): Apakah bisnis sustainable dan profitable
-Founder Credibility (30%): Track record dan kapabilitas eksekusi
-Market Opportunity (20%): Size dan growth potential market
-Financial Health (10%): Current financial condition dan cash flow
-Possible Outcomes:
-✅ Approved: Langsung bisa proceed ke NFT launch
-⚠️ Conditional Approval: Butuh perbaikan minor (additional docs, clarification)
-❌ Rejected: Tidak memenuhi kriteria (bisa reapply setelah 6 bulan)
-Step 5: Collateral Lock & NFT Setup
-Collateral Locking Process:
-Founder memilih payment option (ICP conversion atau direct ckUSDC)
-Jika ICP: System shows real-time conversion rate dengan countdown timer
-Jika ckUSDC: Direct transfer ke platform smart contract
-Smart contract lock ckUSDC dengan time-lock 3 tahun
-Platform verify collateral sudah masuk dan memenuhi minimum requirement
-Smart contract setup untuk auto-deduction jika profit sharing gagal bayar
-NFT Configuration:
-Tentukan total NFT supply (recommended 50-500 NFTs)
-Hitung harga per NFT dalam ckUSDC berdasarkan formula platform
-Setup profit sharing distribution mechanism dalam ckUSDC
-Create NFT metadata dan marketing materials
-Step 6: Pre-Launch Marketing
-Marketing Preparation:
-Platform bantu create pitch deck dan marketing copy
-Photo/video content untuk showcase bisnis
-FAQ preparation untuk potential investor questions
-Social media content planning
-Community engagement strategy
-Soft Launch:
-Beta testing dengan small group investor
-Gather feedback dan iteration
-Fix technical issues jika ada
-Final preparation untuk public launch
-4. Operasional Setelah Funding
-Monthly Reporting Obligations
-Deadline: Maksimal tanggal 10 setiap bulan Format: Template yang disediakan platform Konsekuensi: Telat report = investor bisa vote negatif
-Content yang Wajib Dilaporkan:
-1. Financial Performance
-Total revenue bulan ini vs target (dalam ckUSDC)
-Major expenses dan breakdown
-Net profit actual vs projected (dalam ckUSDC)
-Cash flow position
-Explanation untuk variance jika ada
-2. Operational Updates
-Key achievements dan milestones
-Major challenges yang dihadapi
-Solutions atau action plans
-Team updates (hiring, promotion, etc.)
-Customer feedback atau testimonials
-3. Visual Evidence
-Photos dari operasional (produksi, toko, kantor)
-Videos singkat (1-2 menit) dari founder
-Screenshots dari sales data, website traffic, etc.
-Before/after photos jika ada improvement
-4. Forward Looking
-Plans untuk bulan depan
-Expected revenue dan activities (dalam ckUSDC)
-Risks atau challenges yang anticipated
-Support yang dibutuhkan dari investor/community
-Profit Sharing Execution
-Timeline:
-Tanggal 1-10: Submit monthly report
-Tanggal 11-17: Investor voting period
-Tanggal 18-20: Platform process voting results
-Tanggal 21: Profit sharing payment deadline
-Payment Process:
-Calculate profit sharing amount sesuai komitmen (dalam ckUSDC)
-Transfer ckUSDC ke platform smart contract
-Platform verify payment dan distribute ke investors
-Jika telat >7 hari, auto-deduct dari ckUSDC collateral
-Payment Methods:
-ckUSDC Transfer: Semua profit sharing menggunakan ckUSDC
-Direct transfer ke platform smart contract address
-Auto-deduction dari ckUSDC collateral jika diperlukan
-Record Keeping:
-Platform maintain transparent ledger semua ckUSDC payments
-Investor bisa track payment history dalam ckUSDC
-Annual tax reporting untuk investor dan startup
-5. Skenario dan Troubleshooting
-Scenario 1: Bisnis Lebih Sukses dari Proyeksi
-Situasi: Revenue actual 150% dari projection
-Options:
-Stick to Original Commitment: Bayar profit sharing sesuai komitmen awal dalam ckUSDC
-Bonus Sharing: Berikan bonus profit sharing untuk reward investors
-Early Completion: Tawarkan complete profit sharing obligation lebih cepat
-Expansion Funding: Propose additional funding round untuk growth
-Recommendation: Bonus sharing untuk build goodwill, tapi tidak wajib
-Scenario 2: Bisnis Underperform
-Situasi: Revenue hanya 70% dari projection, sulit bayar profit sharing dalam ckUSDC
-Immediate Actions:
-Transparent Communication: Explain situasi ke investor secepatnya
-Root Cause Analysis: Identifikasi kenapa underperform
-Recovery Plan: Buat detailed plan untuk turnaround
-Stakeholder Discussion: Minta input dan support dari community
-Options:
-Partial Payment: Bayar sebagian profit sharing ckUSDC + jangka waktu extended
-Debt Restructuring: Negotiate payment schedule dengan investors
-Collateral Usage: Let platform auto-deduct dari ckUSDC collateral
-Business Pivot: Propose major strategy changes
-Scenario 3: Emergency Situation
-Situasi: Force majeure (bencana, pandemi, regulasi berubah)
-Protocol:
-Immediate Notification: Inform platform dan investors dalam 48 jam
-Documentation: Provide evidence dari emergency situation
-Impact Assessment: Calculate financial impact dan recovery timeline
-Emergency Plan: Present contingency plan dan resource requirement
-Platform Support:
-Temporary suspension voting requirement
-Emergency fund access (jika ada)
-Legal assistance untuk insurance claims
-Community support dan advice
-Scenario 4: Ingin Keluar Lebih Awal
-Situasi: Founder ingin complete obligation sebelum 3 tahun
-Requirements:
-Good Standing: Tidak ada outstanding payment atau dispute
-Community Approval: Majority investor setuju dengan early completion
-Fair Compensation: Provide fair value untuk remaining profit sharing
-Transition Plan: Ensure smooth handover jika bisnis dijual/diakuisisi
-Calculation Example:
-Remaining obligation: 18 bulan × $500 = $9,000 ckUSDC
-Early completion discount: 10-20% (negotiable)
-Final payment: $7,200 - $9,000 ckUSDC
+Platform menggunakan sistem jaminan yang sepenuhnya _on-chain_ dalam ckUSDC untuk stabilitas nilai, dengan dua opsi pembayaran:
 
-6. Success Tips untuk Founder
-Before Applying:
-Acquire ckUSDC atau ICP: Pastikan memiliki cukup untuk collateral requirements
-Understand Commitment: 36 bulan commitment dengan ckUSDC collateral terkunci
-Wallet Setup: Install dan setup Internet Computer wallet dengan security maksimal
-Currency Management: Understand cara transfer dan manage ckUSDC/ICP tokens
-Realistic Planning: Jangan overestimate revenue, karena profit sharing harus dibayar dalam ckUSDC
-During Operations:
-Over-communicate: Better too much info than too little
-Consistent Performance: Maintain stable profit sharing, avoid big fluctuations
-Community Building: Treat investors sebagai partners, bukan just funders
-Continuous Improvement: Always look for ways to grow dan optimize
-Risk Management: Have backup plans untuk different scenarios
-Long-term Success:
-Reputation Building: Good track record opens doors untuk future funding
-Network Effects: Happy investors jadi advocates dan referral source
-Business Growth: Use funding effectively untuk sustainable growth
-Exit Strategy: Plan untuk life after 3 tahun - IPO, acquisition, atau independent
-Ecosystem Contribution: Help other founders dan contribute to platform community
-7. Biaya dan Financial Implications
-Platform Fees:
-Listing Fee: $200-500 ckUSDC (one-time, untuk cover review cost)
-Success Fee: 5% dari total funding raised (dalam ckUSDC)
-Monthly Service Fee: $50 ckUSDC per bulan untuk platform usage
-Payment Processing: 1% dari setiap profit sharing payment
-Hidden Costs:
-ckUSDC Collateral Lock: ckUSDC yang dikunci tidak bisa digunakan untuk keperluan lain
-Transaction Fees: Network fees untuk collateral management
-Opportunity Cost: ckUSDC yang dikunci tidak bisa di-invest elsewhere
-Reporting Overhead: Time cost untuk monthly reporting dan community management
-Conversion Fees: Jika menggunakan ICP untuk collateral atau payments
-Total Cost Example:
-Funding Target: $40,000 ckUSDC
-ckUSDC Collateral Required: $12,000 + 10% buffer = $13,200 ckUSDC
-Platform Fees: $300 (listing) + $2,000 (success) = $2,300 ckUSDC
-Ongoing Costs: $50 × 36 bulan = $1,800 ckUSDC
-Total Platform Cost: $4,100 ckUSDC + $13,200 ckUSDC locked = $17,300 total commitment
+- **Opsi A: Bayar dengan ICP**
+  - Founder mentransfer ICP yang otomatis dikonversi ke ckUSDC.
+  - Tampilan nilai konversi _real-time_ dengan _countdown timer_.
+  - Proses konversi yang transparan tanpa biaya tersembunyi.
+- **Opsi B: Bayar langsung dengan ckUSDC**
+  - Founder yang sudah memiliki ckUSDC dapat langsung menyetor.
+  - Tidak ada biaya konversi atau risiko _slippage_.
+  - Pemrosesan instan tanpa menunggu konversi.
 
-Note: Total commitment mencakup funding yang diterima plus collateral yang dikunci. Collateral dikembalikan setelah 3 tahun jika semua obligations terpenuhi.
-ROI Calculation:
-Net Funding: $40,000 - $4,100 = $35,900 ckUSDC
-Total Profit Sharing: $1,000 × 36 bulan = $36,000 ckUSDC  
-ckUSDC Collateral Locked: $13,200 ckUSDC
-Net Cost: $4,100 + $36,000 = $40,100 ckUSDC
-Effective Cost: $40,100 / $35,900 / 3 tahun = 37.2% per tahun
+**Mengapa ckUSDC untuk Jaminan?**
 
-*Assuming ckUSDC collateral dikembalikan penuh setelah 3 tahun
+- **Nilai Stabil**: Tidak ada risiko volatilitas seperti mata uang kripto lainnya.
+- **Persyaratan yang Dapat Diprediksi**: Founder tahu persis jumlah yang dibutuhkan.
+- **Adil untuk Semua**: Investor dan founder memiliki kepastian dalam perencanaan.
+- **Valuasi Transparan**: Nilai _real-time_ dan stabil.
 
-Bandingkan dengan:
-Bank loan: 12-18% per tahun + collateral requirement + strict terms
-VC funding: 20-30% equity + board control + exit pressure
-Peer-to-peer lending: 15-25% per tahun + personal guarantee
-8. Conclusion
-Plantify menawarkan alternatif funding yang menarik untuk founder yang:
-Ingin maintain control penuh atas bisnis
-Siap berkomitmen profit sharing jangka menengah
-Memiliki asset collateral yang cukup
-Comfortable dengan transparent reporting
-Ingin membangun community investor yang supportive
-Key Success Factors:
-Realistic Financial Planning - Jangan overcommit
-Strong Execution - Deliver on promises consistently
-Transparent Communication - Build trust dengan community
-Long-term Thinking - Focus pada sustainable growth
-Risk Management - Always have backup plans
-Final Advice: Treat ini sebagai partnership dengan investor community, bukan just transactional funding. Success Anda adalah success mereka juga, dan vice versa.
-Currency Advantage: Dengan menggunakan ckUSDC, Anda mendapatkan:
-Predictable costs - No surprise dari volatility
-Stable planning - Business projection lebih accurate
-Investor confidence - Clear, stable returns
-Professional approach - Enterprise-grade financial management
+**Persyaratan Jaminan:**
 
+- **Jaminan minimum**: 12 bulan profit sharing dalam ckUSDC.
+- **Buffer tambahan**: 10% ekstra untuk biaya penanganan dan operasional.
+- **Periode penguncian (_lock period_)**: 36 bulan penuh.
 
+**Contoh Perhitungan:**
+Komitmen profit sharing: \$500 per bulan
+Kebutuhan 12 bulan: \$6,000 ckUSDC
+Dengan buffer 10%: \$6,000 + \$600 = \$6,600 ckUSDC total
+
+### Langkah 4: Tinjauan Platform
+
+**Proses Tinjauan:**
+
+- **Verifikasi Dokumen**: Tim platform memeriksa kelengkapan dan validitas dokumen.
+- **Penilaian Bisnis**: Evaluasi kelayakan bisnis dan realistis tidaknya proyeksi.
+- **Penilaian Risiko**: Platform memberikan skor risiko berdasarkan kriteria internal.
+- **Verifikasi Jaminan**: Konfirmasi aset jaminan memenuhi persyaratan.
+- **Wawancara Akhir**: Panggilan video dengan founder untuk klarifikasi.
+
+**Kriteria Penilaian:**
+
+- **Kelangsungan Bisnis (40%)**: Apakah bisnis berkelanjutan dan menguntungkan.
+- **Kredibilitas Founder (30%)**: _Track record_ dan kapabilitas eksekusi.
+- **Peluang Pasar (20%)**: Ukuran dan potensi pertumbuhan pasar.
+- **Kesehatan Finansial (10%)**: Kondisi finansial saat ini dan arus kas.
+
+**Kemungkinan Hasil:**
+
+- **✅ Disetujui**: Dapat langsung melanjutkan ke peluncuran NFT.
+- **⚠️ Persetujuan Bersyarat**: Butuh perbaikan minor (dokumen tambahan, klarifikasi).
+- **❌ Ditolak**: Tidak memenuhi kriteria (dapat mengajukan kembali setelah 6 bulan).
+
+### Langkah 5: Penguncian Jaminan & Pengaturan NFT
+
+**Proses Penguncian Jaminan (_Collateral Locking_)**
+
+- Founder memilih opsi pembayaran (konversi ICP atau ckUSDC langsung).
+- Jika ICP: Sistem menampilkan nilai konversi _real-time_ dengan _countdown timer_.
+- Jika ckUSDC: Transfer langsung ke _smart contract_ platform.
+- _Smart contract_ mengunci ckUSDC dengan kunci waktu (time-lock) 3 tahun.
+- Platform memverifikasi jaminan telah masuk dan memenuhi persyaratan minimum.
+- _Smart contract_ diatur untuk pemotongan otomatis jika pembayaran profit sharing gagal.
+
+**Konfigurasi NFT**
+
+- Tentukan total pasokan NFT (_supply_) (direkomendasikan 50-500 NFT).
+- Hitung harga per NFT dalam ckUSDC berdasarkan formula platform.
+- Atur mekanisme distribusi profit sharing dalam ckUSDC.
+- Buat metadata NFT dan materi pemasaran.
+
+### Langkah 6: Pemasaran Pra-Peluncuran (_Pre-Launch Marketing_)
+
+**Persiapan Pemasaran:**
+
+- Platform membantu membuat _pitch deck_ dan salinan pemasaran (_marketing copy_).
+- Konten foto/video untuk menampilkan bisnis.
+- Persiapan FAQ untuk pertanyaan calon investor.
+- Perencanaan konten media sosial.
+- Strategi keterlibatan komunitas.
+
+**Peluncuran Awal (_Soft Launch_)**
+
+- Pengujian beta dengan kelompok kecil investor.
+- Mengumpulkan umpan balik dan iterasi.
+- Memperbaiki masalah teknis jika ada.
+- Persiapan akhir untuk peluncuran publik.
+
+---
+
+## 4. Operasional Setelah Pendanaan
+
+### Kewajiban Laporan Bulanan (_Monthly Reporting Obligations_)
+
+- **Batas waktu**: Maksimal tanggal 10 setiap bulan.
+- **Format**: Template yang disediakan platform.
+- **Konsekuensi**: Terlambat melapor = investor bisa memberikan suara negatif.
+
+**Konten yang Wajib Dilaporkan:**
+
+1.  **Kinerja Finansial**
+
+    - Total pendapatan bulan ini vs target (dalam ckUSDC).
+    - Biaya besar dan rinciannya.
+    - Laba bersih aktual vs proyeksi (dalam ckUSDC).
+    - Posisi arus kas.
+    - Penjelasan untuk varians jika ada.
+
+2.  **Pembaruan Operasional**
+
+    - Pencapaian dan tonggak penting.
+    - Tantangan utama yang dihadapi.
+    - Solusi atau rencana tindakan.
+    - Pembaruan tim (perekrutan, promosi, dll.).
+    - Umpan balik atau testimoni pelanggan.
+
+3.  **Bukti Visual**
+
+    - Foto-foto operasional (produksi, toko, kantor).
+    - Video singkat (1-2 menit) dari founder.
+    - Tangkapan layar dari data penjualan, lalu lintas situs web, dll.
+    - Foto sebelum/sesudah jika ada perbaikan.
+
+4.  **Pandangan ke Depan (_Forward Looking_)**
+    - Rencana untuk bulan depan.
+    - Proyeksi pendapatan dan aktivitas (dalam ckUSDC).
+    - Risiko atau tantangan yang diantisipasi.
+    - Dukungan yang dibutuhkan dari investor/komunitas.
+
+### Eksekusi Profit Sharing
+
+**Linimasa:**
+
+- **Tanggal 1-10**: Kirimkan laporan bulanan.
+- **Tanggal 11-17**: Periode pemungutan suara investor.
+- **Tanggal 18-20**: Platform memproses hasil pemungutan suara.
+- **Tanggal 21**: Batas waktu pembayaran profit sharing.
+
+**Proses Pembayaran:**
+
+- Hitung jumlah profit sharing sesuai komitmen (dalam ckUSDC).
+- Transfer ckUSDC ke _smart contract_ platform.
+- Platform memverifikasi pembayaran dan mendistribusikannya ke investor.
+- Jika terlambat >7 hari, pemotongan otomatis dari jaminan ckUSDC.
+
+**Metode Pembayaran:**
+
+- **Transfer ckUSDC**: Semua profit sharing menggunakan ckUSDC.
+- Transfer langsung ke alamat _smart contract_ platform.
+- Pemotongan otomatis dari jaminan ckUSDC jika diperlukan.
+
+**Pencatatan (_Record Keeping_)**
+
+- Platform memelihara buku besar yang transparan untuk semua pembayaran ckUSDC.
+- Investor dapat melacak riwayat pembayaran dalam ckUSDC.
+- Pelaporan pajak tahunan untuk investor dan startup.
+
+---
+
+## 5. Skenario dan Pemecahan Masalah
+
+### Skenario 1: Bisnis Lebih Sukses dari Proyeksi
+
+**Situasi**: Pendapatan aktual 150% dari proyeksi.
+
+**Opsi**:
+
+- **Tetap pada Komitmen Awal**: Bayar profit sharing sesuai komitmen awal dalam ckUSDC.
+- **Pembagian Bonus**: Berikan bonus profit sharing untuk menghargai investor.
+- **Penyelesaian Lebih Awal**: Tawarkan untuk menyelesaikan kewajiban profit sharing lebih cepat.
+- **Pendanaan Ekspansi**: Ajukan putaran pendanaan tambahan untuk pertumbuhan.
+
+**Rekomendasi**: Pembagian bonus untuk membangun niat baik, tetapi tidak wajib.
+
+### Skenario 2: Bisnis Berkinerja Buruk (_Underperform_)
+
+**Situasi**: Pendapatan hanya 70% dari proyeksi, sulit membayar profit sharing dalam ckUSDC.
+
+**Tindakan Segera**:
+
+- **Komunikasi Transparan**: Jelaskan situasi kepada investor secepatnya.
+- **Analisis Akar Masalah**: Identifikasi mengapa berkinerja buruk.
+- **Rencana Pemulihan**: Buat rencana terperinci untuk perbaikan.
+- **Diskusi Pemangku Kepentingan**: Minta masukan dan dukungan dari komunitas.
+
+**Opsi**:
+
+- **Pembayaran Sebagian**: Bayar sebagian profit sharing ckUSDC + perpanjangan waktu.
+- **Restrukturisasi Utang**: Negosiasikan jadwal pembayaran dengan investor.
+- **Penggunaan Jaminan**: Biarkan platform memotong secara otomatis dari jaminan ckUSDC.
+- **Perubahan Bisnis (_Pivot_)**: Ajukan perubahan strategi besar.
+
+### Skenario 3: Situasi Darurat
+
+**Situasi**: _Force majeure_ (bencana, pandemi, perubahan regulasi).
+
+**Protokol**:
+
+- **Pemberitahuan Segera**: Informasikan platform dan investor dalam 48 jam.
+- **Dokumentasi**: Berikan bukti situasi darurat.
+- **Penilaian Dampak**: Hitung dampak finansial dan linimasa pemulihan.
+- **Rencana Darurat**: Sajikan rencana darurat dan kebutuhan sumber daya.
+
+**Dukungan Platform**:
+
+- Penangguhan sementara persyaratan pemungutan suara.
+- Akses dana darurat (jika tersedia).
+- Bantuan hukum untuk klaim asuransi.
+- Dukungan dan saran komunitas.
+
+### Skenario 4: Ingin Keluar Lebih Awal
+
+**Situasi**: Founder ingin menyelesaikan kewajiban sebelum 3 tahun.
+
+**Persyaratan**:
+
+- **Berkinerja Baik (_Good Standing_)**: Tidak ada pembayaran atau sengketa yang tertunda.
+- **Persetujuan Komunitas**: Mayoritas investor setuju dengan penyelesaian lebih awal.
+- **Kompensasi yang Adil**: Berikan nilai yang adil untuk sisa profit sharing.
+- **Rencana Transisi**: Pastikan transisi berjalan lancar jika bisnis dijual/diakuisisi.
+
+**Contoh Perhitungan:**
+Kewajiban tersisa: 18 bulan × \$500 = \$9,000 ckUSDC
+Diskon penyelesaian lebih awal: 10-20% (dapat dinegosiasikan)
+Pembayaran akhir: \$7,200 - \$9,000 ckUSDC
+
+---
+
+## 6. Tips Sukses untuk Founder
+
+### Sebelum Mendaftar:
+
+- **Dapatkan ckUSDC atau ICP**: Pastikan memiliki cukup untuk persyaratan jaminan.
+- **Pahami Komitmen**: Komitmen 36 bulan dengan jaminan ckUSDC yang terkunci.
+- **Pengaturan Dompet**: Pasang dan atur dompet Internet Computer dengan keamanan maksimal.
+- **Manajemen Mata Uang**: Pahami cara mentransfer dan mengelola token ckUSDC/ICP.
+- **Perencanaan Realistis**: Jangan melebih-lebihkan pendapatan, karena profit sharing harus dibayar dalam ckUSDC.
+
+### Selama Operasi:
+
+- **Komunikasi Berlebihan (_Over-communicate_)**: Lebih baik terlalu banyak info daripada terlalu sedikit.
+- **Kinerja Konsisten**: Pertahankan profit sharing yang stabil, hindari fluktuasi besar.
+- **Membangun Komunitas**: Perlakukan investor sebagai mitra, bukan hanya pemberi dana.
+- **Peningkatan Berkelanjutan**: Selalu cari cara untuk tumbuh dan mengoptimalkan.
+- **Manajemen Risiko**: Punya rencana cadangan untuk berbagai skenario.
+
+### Kesuksesan Jangka Panjang:
+
+- **Membangun Reputasi**: _Track record_ yang baik membuka pintu untuk pendanaan di masa depan.
+- **Efek Jaringan**: Investor yang senang menjadi advokat dan sumber rujukan.
+- **Pertumbuhan Bisnis**: Gunakan pendanaan secara efektif untuk pertumbuhan yang berkelanjutan.
+- **Strategi Keluar (_Exit Strategy_)**: Rencanakan kehidupan setelah 3 tahun—IPO, akuisisi, atau mandiri.
+- **Kontribusi Ekosistem**: Bantu founder lain dan berkontribusi pada komunitas platform.
+
+---
+
+## 7. Biaya dan Implikasi Finansial
+
+### Biaya Platform:
+
+- **Biaya Pencatatan (_Listing Fee_)**: \$200-500 ckUSDC (satu kali, untuk menutupi biaya tinjauan).
+- **Biaya Sukses (_Success Fee_)**: 5% dari total pendanaan yang terkumpul (dalam ckUSDC).
+- **Biaya Layanan Bulanan**: \$50 ckUSDC per bulan untuk penggunaan platform.
+- **Pemrosesan Pembayaran**: 1% dari setiap pembayaran profit sharing.
+
+### Biaya Tersembunyi:
+
+- **Penguncian Jaminan ckUSDC**: ckUSDC yang terkunci tidak dapat digunakan untuk keperluan lain.
+- **Biaya Transaksi**: Biaya jaringan untuk manajemen jaminan.
+- **Biaya Peluang (_Opportunity Cost_)**: ckUSDC yang terkunci tidak dapat diinvestasikan di tempat lain.
+- **Beban Pelaporan (_Reporting Overhead_)**: Biaya waktu untuk pelaporan bulanan dan manajemen komunitas.
+- **Biaya Konversi**: Jika menggunakan ICP untuk jaminan atau pembayaran.
+
+**Contoh Total Biaya:**
+
+Target Pendanaan: \$40,000 ckUSDC
+Jaminan ckUSDC yang dibutuhkan: \$12,000 + 10% buffer = \$13,200 ckUSDC
+Biaya Platform: \$300 (pencatatan) + \$2,000 (sukses) = \$2,300 ckUSDC
+Biaya Berkelanjutan: \$50 × 36 bulan = \$1,800 ckUSDC
+Total Biaya Platform: \$4,100 ckUSDC + \$13,200 ckUSDC terkunci = \$17,300 komitmen total
+
+_Catatan: Total komitmen mencakup pendanaan yang diterima ditambah jaminan yang dikunci. Jaminan dikembalikan setelah 3 tahun jika semua kewajiban terpenuhi._
+
+**Perhitungan ROI:**
+
+Pendanaan Bersih: \$40,000 - \$4,100 = \$35,900 ckUSDC
+Total Profit Sharing: \$1,000 × 36 bulan = \$36,000 ckUSDC
+Jaminan ckUSDC Terkunci: \$13,200 ckUSDC
+Biaya Bersih: \$4,100 + \$36,000 = \$40,100 ckUSDC
+Biaya Efektif: \$40,100 / \$35,900 / 3 tahun = 37.2% per tahun
+
+_\*Dengan asumsi jaminan ckUSDC dikembalikan sepenuhnya setelah 3 tahun._
+
+**Bandingkan dengan:**
+
+- **Pinjaman bank**: 12-18% per tahun + persyaratan jaminan + ketentuan ketat.
+- **Pendanaan VC**: 20-30% ekuitas + kontrol dewan + tekanan untuk keluar.
+- **Pinjaman _peer-to-peer_**: 15-25% per tahun + jaminan pribadi.
+
+---
+
+## 8. Kesimpulan
+
+Plantify menawarkan alternatif pendanaan yang menarik untuk founder yang:
+
+- Ingin mempertahankan kendali penuh atas bisnis.
+- Siap berkomitmen profit sharing jangka menengah.
+- Memiliki aset jaminan yang cukup.
+- Nyaman dengan pelaporan yang transparan.
+- Ingin membangun komunitas investor yang suportif.
+
+### Faktor Kunci Keberhasilan:
+
+- **Perencanaan Finansial Realistis** - Jangan terlalu berkomitmen.
+- **Eksekusi yang Kuat** - Penuhi janji secara konsisten.
+- **Komunikasi Transparan** - Bangun kepercayaan dengan komunitas.
+- **Berpikir Jangka Panjang** - Fokus pada pertumbuhan yang berkelanjutan.
+- **Manajemen Risiko** - Selalu punya rencana cadangan.
+
+**Saran Akhir:** Perlakukan ini sebagai kemitraan dengan komunitas investor, bukan hanya pendanaan transaksional. Kesuksesan Anda adalah kesuksesan mereka juga, dan sebaliknya.
+
+**Keuntungan Mata Uang:** Dengan menggunakan ckUSDC, Anda mendapatkan:
+
+- **Biaya yang Dapat Diprediksi** - Tidak ada kejutan dari volatilitas.
+- **Perencanaan Stabil** - Proyeksi bisnis lebih akurat.
+- **Kepercayaan Investor** - Pengembalian yang jelas dan stabil.
+- **Pendekatan Profesional** - Manajemen keuangan tingkat perusahaan.
