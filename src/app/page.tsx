@@ -26,10 +26,10 @@ export default function PlantifyLandingPage() {
 
           {/* Desktop navigation */}
           <nav className="hidden md:flex space-x-4">
-            <div className="border border-black px-3 py-1 cursor-pointer hover:bg-gray-100">
+            <div onClick={() => router.push("/marketplace")} className="border border-black px-3 py-1 cursor-pointer hover:bg-gray-100">
               Browse Startups
             </div>
-            <div className="border border-black px-3 py-1 cursor-pointer hover:bg-gray-100">
+            <div onClick={() => router.push("/founder")} className="border border-black px-3 py-1 cursor-pointer hover:bg-gray-100">
               For Founders
             </div>
             <div className="border border-black px-3 py-1 cursor-pointer hover:bg-gray-100">
@@ -87,10 +87,10 @@ export default function PlantifyLandingPage() {
               community-driven.
             </p>
             <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <button className="bg-black text-white px-6 py-3 text-lg hover:bg-gray-800">
+              <button onClick={() => router.push("/marketplace")} className="bg-black text-white px-6 py-3 text-lg hover:bg-gray-800">
                 Browse Startups
               </button>
-              <button className="border-2 border-black px-6 py-3 text-lg hover:bg-gray-100">
+              <button onClick={() => router.push("/founder")} className="border-2 border-black px-6 py-3 text-lg hover:bg-gray-100">
                 Register as Founder
               </button>
             </div>
@@ -352,7 +352,7 @@ export default function PlantifyLandingPage() {
           </div>
 
           <div className="text-center mt-8">
-            <button className="bg-black text-white px-8 py-3 hover:bg-gray-800">
+            <button onClick={() => router.push("/marketplace")} className="bg-black text-white px-8 py-3 hover:bg-gray-800">
               VIEW ALL STARTUPS
             </button>
           </div>
@@ -423,7 +423,7 @@ export default function PlantifyLandingPage() {
             investments
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
-            <button className="bg-white text-black px-8 py-4 text-lg hover:bg-gray-100">
+            <button onClick={() => router.push("/onboarding")}  className="bg-white text-black px-8 py-4 text-lg hover:bg-gray-100">
               START INVESTING
             </button>
             <button className="border-2 border-white px-8 py-4 text-lg hover:border-gray-300 hover:text-gray-300">
