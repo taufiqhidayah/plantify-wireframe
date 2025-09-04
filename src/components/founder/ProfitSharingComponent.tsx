@@ -558,7 +558,7 @@ const ProfitSharingComponent = ({
                   <span className="font-bold">Approval Rate:</span> 95% (76/80 votes)
                 </div>
                 <div className="text-sm">
-                  <span className="font-bold">Comments:</span> "Excellent performance this month. Revenue exceeded expectations and the team delivered on all milestones."
+                  <span className="font-bold">Comments:</span> &quot;Excellent performance this month. Revenue exceeded expectations and the team delivered on all milestones.&quot;
                 </div>
               </div>
               
@@ -571,7 +571,7 @@ const ProfitSharingComponent = ({
                   <span className="font-bold">Approval Rate:</span> 97.5% (78/80 votes)
                 </div>
                 <div className="text-sm">
-                  <span className="font-bold">Comments:</span> "Outstanding month! The new product launch was successful and customer feedback is very positive."
+                  <span className="font-bold">Comments:</span> &quot;Outstanding month! The new product launch was successful and customer feedback is very positive.&quot;
                 </div>
               </div>
               
@@ -584,7 +584,7 @@ const ProfitSharingComponent = ({
                   <span className="font-bold">Approval Rate:</span> 90% (72/80 votes)
                 </div>
                 <div className="text-sm">
-                  <span className="font-bold">Comments:</span> "Good progress despite market challenges. Looking forward to seeing the improvements mentioned in the forward-looking section."
+                  <span className="font-bold">Comments:</span> &quot;Good progress despite market challenges. Looking forward to seeing the improvements mentioned in the forward-looking section.&quot;
                 </div>
               </div>
             </div>

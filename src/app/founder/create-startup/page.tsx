@@ -203,7 +203,7 @@ const PlantifyCreateStartup = () => {
     "Other"
   ];
 
-  const handleInputChange = (field: string, value: any) => {
+  const handleInputChange = (field: string, value: string | number | boolean | File | null) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
@@ -234,7 +234,7 @@ const PlantifyCreateStartup = () => {
     }));
   };
 
-  const updateTeamMember = (id: number, field: string, value: any) => {
+  const updateTeamMember = (id: number, field: string, value: string | number | boolean | File | null) => {
     setFormData(prev => ({
       ...prev,
       teamMembers: prev.teamMembers.map(member =>

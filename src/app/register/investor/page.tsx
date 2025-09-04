@@ -69,7 +69,7 @@ const PlantifyInvestorRegistration = () => {
     "Over $50,000",
   ];
 
-  const handleInputChange = (field, value) => {
+  const handleInputChange = (field: string, value: string | number | boolean) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
@@ -351,7 +351,7 @@ const PlantifyInvestorRegistration = () => {
 
               <p className="text-sm mb-6">
                 Please confirm your understanding of key platform concepts. This
-                helps ensure you're prepared for startup investing on Plantify.
+                helps ensure you&apos;re prepared for startup investing on Plantify.
               </p>
 
               <div className="space-y-6">
@@ -454,7 +454,7 @@ const PlantifyInvestorRegistration = () => {
             <div className="border-2 border-black p-4 bg-green-50">
               <div className="font-bold mb-2">📚 LEARNING RESOURCES</div>
               <div className="text-sm">
-                After registration, you'll have access to investor education
+                After registration, you&apos;ll have access to investor education
                 materials, startup analysis guides, and community discussions to
                 improve your investment skills.
               </div>
@@ -555,9 +555,9 @@ const PlantifyInvestorRegistration = () => {
             </div>
 
             <div className="border-2 border-black p-4 bg-blue-50">
-              <div className="font-bold mb-2">🎯 WHAT'S NEXT?</div>
+              <div className="font-bold mb-2">🎯 WHAT&apos;S NEXT?</div>
               <div className="text-sm">
-                After completing registration, you'll access the startup
+                After completing registration, you&apos;ll access the startup
                 marketplace, investor dashboard, and educational resources to
                 begin your investment journey.
               </div>
